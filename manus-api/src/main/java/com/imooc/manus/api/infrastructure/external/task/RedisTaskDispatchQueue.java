@@ -155,6 +155,17 @@ public class RedisTaskDispatchQueue implements TaskDispatchQueue {
         }
     }
 
+    private boolean isBusyGroupError(Exception e) {
+        Throwable cause = e;
+        while (cause != null) {
+            if (cause.getMessage() != null && cause.getMessage().contains("BUSYGROUP")) {
+                return true;
+            }
+            cause = cause.getCause();
+        }
+        return false;
+    }
+
     private void ensureConsumerGroup() {
         if (groupInitialized.get()) {
             return;
@@ -169,8 +180,7 @@ public class RedisTaskDispatchQueue implements TaskDispatchQueue {
                 groupInitialized.set(true);
                 return;
             } catch (Exception first) {
-                String message = first.getMessage() != null ? first.getMessage() : "";
-                if (message.contains("BUSYGROUP")) {
+                if (isBusyGroupError(first)) {
                     groupInitialized.set(true);
                     return;
                 }
@@ -179,8 +189,7 @@ public class RedisTaskDispatchQueue implements TaskDispatchQueue {
                     try {
                         ops.createGroup(streamKey, ReadOffset.from("0-0"), consumerGroup);
                     } catch (Exception second) {
-                        String nested = second.getMessage() != null ? second.getMessage() : "";
-                        if (!nested.contains("BUSYGROUP")) {
+                        if (!isBusyGroupError(second)) {
                             throw second;
                         }
                     } finally {

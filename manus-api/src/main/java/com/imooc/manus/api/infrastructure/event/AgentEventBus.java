@@ -1,4 +1,4 @@
-package com.imooc.manus.api.event;
+package com.imooc.manus.api.infrastructure.event;
 
 import com.imooc.manus.api.domain.model.session.Session;
 import com.imooc.manus.api.interfaces.sse.SsePublisher;

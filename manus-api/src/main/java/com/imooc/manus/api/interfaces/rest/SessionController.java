@@ -4,9 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.manus.api.domain.model.file.FileMeta;
 import com.imooc.manus.api.domain.model.session.Session;
 import com.imooc.manus.api.interfaces.sse.SsePublisher;
-import com.imooc.manus.api.observability.ExecutionObservationSink;
-import com.imooc.manus.api.service.ChatService;
-import com.imooc.manus.api.service.SessionService;
+import com.imooc.manus.api.infrastructure.observability.ExecutionObservationSink;
+import com.imooc.manus.api.application.service.ChatService;
+import com.imooc.manus.api.application.service.SessionQueryService;
+import com.imooc.manus.api.application.service.SessionCommandService;
 import com.imooc.manus.common.dto.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,16 +37,19 @@ public class SessionController {
 
     private static final Logger log = LoggerFactory.getLogger(SessionController.class);
 
-    private final SessionService sessionService;
+    private final SessionQueryService sessionQueryService;
+    private final SessionCommandService sessionCommandService;
     private final ChatService chatService;
     private final ExecutionObservationSink executionObservationSink;
     private final ObjectMapper objectMapper;
 
-    public SessionController(SessionService sessionService,
+    public SessionController(SessionQueryService sessionQueryService,
+                             SessionCommandService sessionCommandService,
                              ChatService chatService,
                              ExecutionObservationSink executionObservationSink,
                              ObjectMapper objectMapper) {
-        this.sessionService = sessionService;
+        this.sessionQueryService = sessionQueryService;
+        this.sessionCommandService = sessionCommandService;
         this.chatService = chatService;
         this.executionObservationSink = executionObservationSink;
         this.objectMapper = objectMapper;
@@ -57,52 +61,52 @@ public class SessionController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<Map<String, Object>>> createSession() {
-        Session session = sessionService.create();
+        Session session = sessionCommandService.create();
         return ResponseEntity.ok(ApiResponse.success(
                 Map.of("session_id", session.getId()), "创建任务会话成功"));
     }
 
     @GetMapping
     public ResponseEntity<ApiResponse<Map<String, Object>>> listSessions() {
-        List<Map<String, Object>> items = sessionService.listAll().stream()
+        List<Map<String, Object>> items = sessionQueryService.listAll().stream()
                 .map(this::toSessionItem).toList();
         return ResponseEntity.ok(ApiResponse.success(Map.of("sessions", items), "获取任务会话列表成功"));
     }
 
     @GetMapping("/{sessionId}")
     public ResponseEntity<ApiResponse<Map<String, Object>>> getSession(@PathVariable String sessionId) {
-        Session session = sessionService.getDetail(sessionId);
+        Session session = sessionQueryService.getDetail(sessionId);
         return ResponseEntity.ok(ApiResponse.success(toSessionDetail(session), "获取会话详情成功"));
     }
 
     @PostMapping("/{sessionId}/delete")
     public ResponseEntity<ApiResponse<Void>> deleteSession(@PathVariable String sessionId) {
-        sessionService.delete(sessionId);
+        sessionCommandService.delete(sessionId);
         return ResponseEntity.ok(ApiResponse.success("删除任务会话成功"));
     }
 
     @PostMapping("/{sessionId}/stop")
     public ResponseEntity<ApiResponse<Void>> stopSession(@PathVariable String sessionId) {
-        sessionService.stop(sessionId);
+        sessionCommandService.stop(sessionId);
         return ResponseEntity.ok(ApiResponse.success("停止任务会话成功"));
     }
 
     @PostMapping("/{sessionId}/clear-unread-message-count")
     public ResponseEntity<ApiResponse<Void>> clearUnread(@PathVariable String sessionId) {
-        sessionService.clearUnreadCount(sessionId);
+        sessionCommandService.clearUnreadCount(sessionId);
         return ResponseEntity.ok(ApiResponse.success("清除未读消息数成功"));
     }
 
     @GetMapping("/{sessionId}/files")
     public ResponseEntity<ApiResponse<Map<String, Object>>> listFiles(@PathVariable String sessionId) {
-        List<Map<String, Object>> files = sessionService.listFiles(sessionId).stream()
+        List<Map<String, Object>> files = sessionQueryService.listFiles(sessionId).stream()
                 .map(this::toFileItem).toList();
         return ResponseEntity.ok(ApiResponse.success(Map.of("files", files), "获取文件列表成功"));
     }
 
     @GetMapping("/{sessionId}/runtime-metrics")
     public ResponseEntity<ApiResponse<Map<String, Object>>> getRuntimeMetrics(@PathVariable String sessionId) {
-        Session session = sessionService.getDetail(sessionId);
+        Session session = sessionQueryService.getDetail(sessionId);
         Map<String, Object> payload = executionObservationSink.getLatestBySessionId(sessionId)
                 .<Map<String, Object>>map(snapshot -> {
                     Map<String, Object> map = new LinkedHashMap<>();
@@ -189,7 +193,7 @@ public class SessionController {
         Thread.ofVirtual().name("session-stream").start(() -> {
             while (!publisher.isClientGone()) {
                 try {
-                    List<Map<String, Object>> items = sessionService.listAll().stream()
+                    List<Map<String, Object>> items = sessionQueryService.listAll().stream()
                             .map(this::toSessionItem).toList();
                     // 此处直接调用 emitter（list stream 无需走 AgentEventBus）
                     emitter.send(SseEmitter.event().name("sessions")

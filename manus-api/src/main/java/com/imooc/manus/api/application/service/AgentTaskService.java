@@ -1,4 +1,4 @@
-package com.imooc.manus.api.service;
+package com.imooc.manus.api.application.service;
 
 import com.imooc.manus.api.domain.external.Task;
 import com.imooc.manus.api.domain.model.session.Session;

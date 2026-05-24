@@ -1,4 +1,4 @@
-package com.imooc.manus.api.agent;
+package com.imooc.manus.api.domain.service.agent;
 
 import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.springai.flow.SpringAIPlannerReActFlow;

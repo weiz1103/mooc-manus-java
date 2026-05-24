@@ -1,14 +1,15 @@
-package com.imooc.manus.api.agent;
+package com.imooc.manus.api.application.agent;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.manus.api.domain.external.Task;
 import com.imooc.manus.api.domain.model.session.Session;
 import com.imooc.manus.api.domain.model.session.SessionStatus;
+import com.imooc.manus.api.domain.service.agent.AgentStrategy;
 import com.imooc.manus.api.domain.repository.SessionRepository;
-import com.imooc.manus.api.event.AgentEventBus;
+import com.imooc.manus.api.infrastructure.event.AgentEventBus;
 import com.imooc.manus.api.interfaces.sse.SsePublisher;
-import com.imooc.manus.api.observability.ExecutionObservationSink;
-import com.imooc.manus.api.service.TaskExecutionService;
+import com.imooc.manus.api.infrastructure.observability.ExecutionObservationSink;
+import com.imooc.manus.api.application.service.TaskExecutionService;
 import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.common.event.DoneEvent;
 import com.imooc.manus.common.event.ErrorEvent;

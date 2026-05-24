@@ -1,19 +1,19 @@
-package com.imooc.manus.api.service;
+package com.imooc.manus.api.application.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.imooc.manus.api.agent.AgentRunner;
+import com.imooc.manus.api.application.agent.AgentRunner;
 import com.imooc.manus.api.domain.external.Task;
 import com.imooc.manus.api.domain.model.session.Session;
 import com.imooc.manus.api.domain.external.TaskDispatchQueue;
 import com.imooc.manus.api.domain.model.task.AgentTaskCommand;
 import com.imooc.manus.api.domain.repository.SessionRepository;
-import com.imooc.manus.api.event.AgentEventBus;
-import com.imooc.manus.api.exception.SessionBusyException;
-import com.imooc.manus.api.exception.SessionNotFoundException;
+import com.imooc.manus.api.infrastructure.event.AgentEventBus;
+import com.imooc.manus.api.domain.exception.SessionBusyException;
+import com.imooc.manus.api.domain.exception.SessionNotFoundException;
 import com.imooc.manus.api.infrastructure.config.AppProperties;
 import com.imooc.manus.api.infrastructure.external.task.RedisStreamTask;
 import com.imooc.manus.api.interfaces.sse.SsePublisher;
-import com.imooc.manus.api.observability.ExecutionObservationSink;
+import com.imooc.manus.api.infrastructure.observability.ExecutionObservationSink;
 import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.common.event.DoneEvent;
 import com.imooc.manus.common.event.ErrorEvent;

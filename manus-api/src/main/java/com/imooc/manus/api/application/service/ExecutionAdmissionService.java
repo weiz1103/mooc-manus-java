@@ -1,4 +1,4 @@
-package com.imooc.manus.api.service;
+package com.imooc.manus.api.application.service;
 
 import com.imooc.manus.api.infrastructure.config.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;

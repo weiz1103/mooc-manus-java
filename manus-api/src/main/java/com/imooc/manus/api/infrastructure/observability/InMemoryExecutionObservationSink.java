@@ -1,8 +1,8 @@
-package com.imooc.manus.api.observability;
+package com.imooc.manus.api.infrastructure.observability;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.manus.api.infrastructure.config.AppProperties;
-import com.imooc.manus.api.service.TaskExecutionService;
+import com.imooc.manus.api.application.service.TaskExecutionService;
 import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.common.event.StepEvent;
 import com.imooc.manus.common.event.ToolEvent;

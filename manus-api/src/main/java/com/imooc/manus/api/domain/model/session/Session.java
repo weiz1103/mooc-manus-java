@@ -1,7 +1,7 @@
 package com.imooc.manus.api.domain.model.session;
 
-import com.imooc.manus.api.domain.model.event.BaseEvent;
-import com.imooc.manus.api.domain.model.event.PlanEvent;
+import com.imooc.manus.common.event.BaseEvent;
+import com.imooc.manus.common.event.PlanEvent;
 import com.imooc.manus.api.domain.model.file.FileMeta;
 import com.imooc.manus.api.domain.model.memory.Memory;
 import com.imooc.manus.api.domain.model.plan.Plan;
@@ -112,10 +112,10 @@ public class Session {
      *
      * @return 最新规划（Optional）
      */
-    public Optional<Plan> getLatestPlan() {
+    public java.util.Optional<com.imooc.manus.common.event.PlanEvent.PlanData> getLatestPlan() {
         for (int i = events.size() - 1; i >= 0; i--) {
-            if (events.get(i) instanceof PlanEvent planEvent) {
-                return Optional.ofNullable(planEvent.getPlan());
+            if (events.get(i) instanceof com.imooc.manus.common.event.PlanEvent planEvent) {
+                return java.util.Optional.ofNullable(planEvent.getPlan());
             }
         }
         return Optional.empty();

@@ -1,4 +1,4 @@
-package com.imooc.manus.api.observability;
+package com.imooc.manus.api.infrastructure.observability;
 
 import lombok.Builder;
 

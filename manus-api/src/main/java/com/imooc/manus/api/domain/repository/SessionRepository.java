@@ -1,6 +1,6 @@
 package com.imooc.manus.api.domain.repository;
 
-import com.imooc.manus.api.domain.model.event.BaseEvent;
+import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.api.domain.model.file.FileMeta;
 import com.imooc.manus.api.domain.model.memory.Memory;
 import com.imooc.manus.api.domain.model.session.Session;
@@ -109,7 +109,7 @@ public interface SessionRepository {
      * @param sessionId 会话id
      * @param eventData 事件的原始键值对
      */
-    void addEventData(String sessionId, java.util.Map<String, Object> eventData);
+    
 
     /**
      * 往会话中新增文件

@@ -1,11 +1,11 @@
-package com.imooc.manus.api.service;
+package com.imooc.manus.api.application.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.manus.api.domain.model.task.TaskExecution;
 import com.imooc.manus.api.domain.model.task.TaskExecutionStatus;
 import com.imooc.manus.api.domain.repository.TaskExecutionRepository;
-import com.imooc.manus.api.observability.ExecutionSnapshot;
+import com.imooc.manus.api.infrastructure.observability.ExecutionSnapshot;
 import com.imooc.manus.common.event.BaseEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

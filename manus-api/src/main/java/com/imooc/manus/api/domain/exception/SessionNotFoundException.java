@@ -1,19 +1,15 @@
 package com.imooc.manus.api.domain.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 /**
- * 会话不存在异常，对应 Python NotFoundError。
- * 由 GlobalExceptionHandler 捕获并转换为 404 响应。
+ * 会话不存在异常。
  */
+@ResponseStatus(HttpStatus.NOT_FOUND)
 public class SessionNotFoundException extends RuntimeException {
 
-    private final String sessionId;
-
     public SessionNotFoundException(String sessionId) {
-        super("Session not found: " + sessionId);
-        this.sessionId = sessionId;
-    }
-
-    public String getSessionId() {
-        return sessionId;
+        super("会话不存在: " + sessionId);
     }
 }

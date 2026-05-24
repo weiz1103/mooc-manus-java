@@ -1,6 +1,6 @@
 package com.imooc.manus.api.interfaces.rest;
 
-import com.imooc.manus.api.service.TaskEvaluationService;
+import com.imooc.manus.api.application.service.TaskEvaluationService;
 import com.imooc.manus.common.dto.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

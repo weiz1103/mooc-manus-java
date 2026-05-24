@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(SessionNotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleSessionNotFound(SessionNotFoundException ex) {
-        log.warn("Session not found: {}", ex.getSessionId());
+        log.warn("Session not found: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(ApiResponse.fail(404, ex.getMessage()));
     }

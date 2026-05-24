@@ -56,7 +56,7 @@ public class JpaSessionStateLoader implements SessionStateLoader {
             if (session == null) return null;
             // 获取 manus-api 的 Plan 并序列化为 JSON
             // manus-spring-ai 的 Plan 字段与 manus-api Plan 字段兼容（相同 JSON 格式）
-            Plan plan = session.getLatestPlan().orElse(null);
+            com.imooc.manus.common.event.PlanEvent.PlanData plan = session.getLatestPlan().orElse(null);
             if (plan == null) return null;
             return OBJECT_MAPPER.writeValueAsString(plan);
         } catch (Exception e) {

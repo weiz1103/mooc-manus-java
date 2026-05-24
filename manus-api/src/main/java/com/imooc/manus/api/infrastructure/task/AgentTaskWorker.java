@@ -1,14 +1,14 @@
 package com.imooc.manus.api.infrastructure.task;
 
-import com.imooc.manus.api.agent.AgentRunner;
+import com.imooc.manus.api.application.agent.AgentRunner;
 import com.imooc.manus.api.domain.external.Task;
 import com.imooc.manus.api.domain.external.TaskDispatchQueue;
 import com.imooc.manus.api.domain.model.session.Session;
 import com.imooc.manus.api.domain.repository.SessionRepository;
 import com.imooc.manus.api.infrastructure.config.AppProperties;
-import com.imooc.manus.api.observability.ExecutionObservationSink;
-import com.imooc.manus.api.service.AgentTaskService;
-import com.imooc.manus.api.service.TaskExecutionService;
+import com.imooc.manus.api.infrastructure.observability.ExecutionObservationSink;
+import com.imooc.manus.api.application.service.AgentTaskService;
+import com.imooc.manus.api.application.service.TaskExecutionService;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.imooc.manus.api.event;
+package com.imooc.manus.api.infrastructure.event;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.manus.api.domain.external.Sandbox;
@@ -55,7 +55,7 @@ public class EventPersister {
             //       但 domain.model.event.MessageEvent.attachments 是 List<FileMeta>，
             //       直接 convertValue 会报 "no String-argument constructor" 类型不匹配错误。
             Map<String, Object> eventData = JSON.convertValue(event, new com.fasterxml.jackson.core.type.TypeReference<>() {});
-            sessionRepository.addEventData(session.getId(), eventData);
+            sessionRepository.addEvent(session.getId(), event);
             appendTaskEventLog(session, event, eventData);
 
             // 解析事件中关联的文件，一并持久化

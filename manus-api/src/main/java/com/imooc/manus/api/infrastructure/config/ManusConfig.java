@@ -178,9 +178,9 @@ public class ManusConfig {
      * 将 Spring AI 的 PlannerReActFlow 适配为统一的 AgentStrategy 接口。
      */
     @Bean
-    public com.imooc.manus.api.agent.AgentStrategy agentStrategy(
+    public com.imooc.manus.api.domain.service.agent.AgentStrategy agentStrategy(
             SpringAIPlannerReActFlow springAIPlannerReActFlow) {
-        return new com.imooc.manus.api.agent.ReActAgentStrategy(springAIPlannerReActFlow);
+        return new com.imooc.manus.api.domain.service.agent.ReActAgentStrategy(springAIPlannerReActFlow);
     }
 
     @Bean

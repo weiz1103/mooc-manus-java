@@ -1,4 +1,4 @@
-package com.imooc.manus.api.exception;
+package com.imooc.manus.api.domain.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

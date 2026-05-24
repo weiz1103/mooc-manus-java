@@ -2,7 +2,7 @@ package com.imooc.manus.api.infrastructure.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.imooc.manus.api.domain.model.event.BaseEvent;
+import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.api.domain.model.file.FileMeta;
 import com.imooc.manus.api.domain.model.memory.Memory;
 import com.imooc.manus.api.domain.model.session.Session;
@@ -130,19 +130,6 @@ public class JpaSessionRepositoryImpl implements SessionRepository {
             } catch (Exception e) {
                 logger.error("序列化事件失败: {}", e.getMessage());
             }
-            model.setEvents(events);
-            model.setUpdatedAt(LocalDateTime.now());
-            jpaRepo.save(model);
-        });
-    }
-
-    @Override
-    @Transactional
-    public void addEventData(String sessionId, Map<String, Object> eventData) {
-        jpaRepo.findById(sessionId).ifPresent(model -> {
-            List<Map<String, Object>> events = model.getEvents();
-            if (events == null) events = new ArrayList<>();
-            events.add(sanitize(eventData));
             model.setEvents(events);
             model.setUpdatedAt(LocalDateTime.now());
             jpaRepo.save(model);

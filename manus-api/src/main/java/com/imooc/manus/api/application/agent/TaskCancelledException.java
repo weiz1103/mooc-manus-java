@@ -1,4 +1,4 @@
-package com.imooc.manus.api.agent;
+package com.imooc.manus.api.application.agent;
 
 /**
  * 协作式取消异常。

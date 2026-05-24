@@ -30,6 +30,17 @@ public class ToolEvent extends BaseEvent {
     }
 
     public enum ToolEventStatus {
-        CALLING, CALLED
+        CALLING("calling"), CALLED("called");
+
+        private final String value;
+
+        ToolEventStatus(String value) {
+            this.value = value;
+        }
+
+        @com.fasterxml.jackson.annotation.JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 }

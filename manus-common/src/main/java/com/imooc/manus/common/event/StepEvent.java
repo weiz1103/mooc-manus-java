@@ -33,6 +33,17 @@ public class StepEvent extends BaseEvent {
     }
 
     public enum StepEventStatus {
-        STARTED, COMPLETED, FAILED
+        STARTED("started"), COMPLETED("completed"), FAILED("failed");
+
+        private final String value;
+
+        StepEventStatus(String value) {
+            this.value = value;
+        }
+
+        @com.fasterxml.jackson.annotation.JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 }

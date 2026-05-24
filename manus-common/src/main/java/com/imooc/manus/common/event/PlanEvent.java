@@ -54,6 +54,17 @@ public class PlanEvent extends BaseEvent {
 
     /** 计划事件状态枚举，对应 Python PlanEventStatus */
     public enum PlanEventStatus {
-        CREATED, UPDATED, COMPLETED
+        CREATED("created"), UPDATED("updated"), COMPLETED("completed");
+
+        private final String value;
+
+        PlanEventStatus(String value) {
+            this.value = value;
+        }
+
+        @com.fasterxml.jackson.annotation.JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 }

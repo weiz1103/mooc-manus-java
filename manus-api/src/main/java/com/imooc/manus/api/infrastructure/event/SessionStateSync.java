@@ -36,7 +36,6 @@ public class SessionStateSync {
         this.sessionRepository = sessionRepository;
     }
 
-    @Transactional
     public void sync(Session session, BaseEvent event) {
         try {
             if (event instanceof MessageEvent me && "assistant".equals(me.getRole())) {

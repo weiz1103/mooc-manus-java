@@ -44,7 +44,9 @@ import java.util.List;
 public class ChatService {
 
     private static final Logger log = LoggerFactory.getLogger(ChatService.class);
-    private static final ObjectMapper JSON = new ObjectMapper().findAndRegisterModules();
+    private static final ObjectMapper JSON = new ObjectMapper()
+            .findAndRegisterModules()
+            .disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
     private final SessionRepository sessionRepository;
     private final AgentTaskService agentTaskService;
@@ -217,6 +219,9 @@ public class ChatService {
                 event.setId(record[0]);
                 publisher.publish(event);
                 if (isTerminal(event)) return;
+            } else {
+                nextId = record[0];
+                log.warn("续流反序列化失败，跳过异常事件: id={}", nextId);
             }
         }
 
@@ -230,6 +235,9 @@ public class ChatService {
                 event.setId(record[0]);
                 publisher.publish(event);
                 if (isTerminal(event)) break;
+            } else {
+                nextId = record[0];
+                log.warn("续流反序列化失败，跳过异常事件: id={}", nextId);
             }
         }
     }
@@ -253,6 +261,7 @@ public class ChatService {
         try {
             return JSON.readValue(record[1], BaseEvent.class);
         } catch (Exception e) {
+            log.error("反序列化事件失败: {}, 原始数据: {}", e.getMessage(), record[1]);
             return null;
         }
     }

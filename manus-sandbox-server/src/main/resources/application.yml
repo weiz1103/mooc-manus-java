@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: manus-sandbox-server
+
+server:
+  port: ${SANDBOX_PORT:8081}
+
+manus:
+  sandbox:
+    work-dir: ${SANDBOX_WORK_DIR:${java.io.tmpdir}/manus-sandbox}
+
+logging:
+  level:
+    com.imooc.manus.sandbox: INFO
+    root: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

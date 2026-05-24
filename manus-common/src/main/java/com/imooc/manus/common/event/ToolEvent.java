@@ -1,0 +1,35 @@
+package com.imooc.manus.common.event;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
+import java.util.Map;
+
+/**
+ * 工具调用事件，对应 Python ToolEvent。
+ * 包含工具名、函数名、参数和结果，前端用此渲染工具调用动画和结果展示。
+ */
+@Data
+@SuperBuilder
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class ToolEvent extends BaseEvent {
+
+    private String toolCallId;
+    private String toolName;
+    private String functionName;
+    private Map<String, Object> functionArgs;
+    private Object toolContent;
+    private ToolEventStatus status = ToolEventStatus.CALLING;
+
+    @Override
+    public String getType() {
+        return "tool";
+    }
+
+    public enum ToolEventStatus {
+        CALLING, CALLED
+    }
+}

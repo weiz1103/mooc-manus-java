@@ -5,9 +5,8 @@ import com.imooc.manus.api.domain.model.toolresult.ToolResult;
 
 /**
  * 搜索引擎API接口协议。
- * 对应Python中的 SearchEngine Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 05:05:36
  */
 public interface SearchEngine {
 

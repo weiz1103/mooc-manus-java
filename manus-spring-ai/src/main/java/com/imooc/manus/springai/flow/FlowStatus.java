@@ -2,9 +2,8 @@ package com.imooc.manus.springai.flow;
 
 /**
  * 规划与执行流的状态枚举。
- * 对应Python中的 FlowStatus 枚举。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 11:47:23
  */
 public enum FlowStatus {
     /** 空闲状态，等待新任务 */

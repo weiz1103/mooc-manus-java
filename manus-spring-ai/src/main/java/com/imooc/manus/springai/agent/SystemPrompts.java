@@ -2,9 +2,8 @@ package com.imooc.manus.springai.agent;
 
 /**
  * 所有 Agent 共用的系统 prompt 常量。
- * 对应Python中的 system.py SYSTEM_PROMPT。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 11:38:14
  */
 public final class SystemPrompts {
 

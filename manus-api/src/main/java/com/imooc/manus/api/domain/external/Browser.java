@@ -5,10 +5,9 @@ import com.imooc.manus.api.domain.model.toolresult.ToolResult;
 /**
  * 浏览器服务扩展，涵盖：访问页面、URL跳转、输入、移动鼠标、滚动、截图、执行js代码等。
  * <p>
- * 对应Python中的 Browser Protocol。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 10:37:29
  */
 public interface Browser {
 

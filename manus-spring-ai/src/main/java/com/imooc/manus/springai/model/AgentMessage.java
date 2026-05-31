@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户消息模型，对应Python中的 Message Pydantic BaseModel。
  * 包含用户发送的文本消息和附件文件路径列表。
  *
  * @param message     用户发送的消息内容
  * @param attachments 用户发送的附件（文件绝对路径列表）
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 23:21:42
  */
 public record AgentMessage(
         String message,

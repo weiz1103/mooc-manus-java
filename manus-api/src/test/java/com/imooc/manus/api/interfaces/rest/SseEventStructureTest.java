@@ -8,6 +8,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 19:46:56
+ */
 public class SseEventStructureTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();

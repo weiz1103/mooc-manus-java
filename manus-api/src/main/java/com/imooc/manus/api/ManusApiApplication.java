@@ -7,11 +7,15 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * MoocManus API 服务入口。
- * Java 重构版，对应原 Python FastAPI 应用。
  */
 @SpringBootApplication
 @EnableAsync
 @EnableConfigurationProperties
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 23:03:54
+ */
 public class ManusApiApplication {
 
     public static void main(String[] args) {

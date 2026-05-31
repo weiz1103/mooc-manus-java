@@ -10,13 +10,12 @@ import java.util.regex.Pattern;
 
 /**
  * JSON修复解析器。
- * 对应Python中的 RepairJSONParser 类。
  * <p>
  * 使用正则表达式清理LLM生成的非标准JSON（如Markdown代码块、前导文字等），
  * 然后用Jackson解析。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 11:22:37
  */
 public class RepairJsonParser implements JsonParser {
 
@@ -30,7 +29,6 @@ public class RepairJsonParser implements JsonParser {
 
     /**
      * 解析文本，修复可能的非标准JSON格式。
-     * 对应Python的 RepairJSONParser.__call__()
      *
      * @param text         要解析的文本（可能包含Markdown标记、非法JSON等）
      * @param defaultValue 解析失败时的默认值（可为null）

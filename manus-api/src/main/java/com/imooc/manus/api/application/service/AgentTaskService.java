@@ -22,6 +22,11 @@ import java.util.Optional;
  * 但对外只暴露领域接口 {@link Task}，屏蔽 Redis 实现细节。</p>
  */
 @Service
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 02:38:05
+ */
 public class AgentTaskService {
 
     private static final Logger log = LoggerFactory.getLogger(AgentTaskService.class);

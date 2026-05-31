@@ -4,6 +4,8 @@ package com.imooc.manus.api.domain.prompt;
  * 提示词系统常量库
  * 迁移自 Python 目录：api/app/domain/services/prompts/
  * 统一管理所有 Agent 的 System Prompt 核心骨架
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 07:46:42
  */
 public final class PromptConstants {
 

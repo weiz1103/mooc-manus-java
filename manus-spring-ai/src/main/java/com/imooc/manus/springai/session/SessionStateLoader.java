@@ -2,7 +2,6 @@ package com.imooc.manus.springai.session;
 
 /**
  * 会话状态加载/更新接口。
- * 对应Python中通过 IUnitOfWork.session 加载和更新会话的操作。
  *
  * <p>
  * manus-spring-ai 模块本身不依赖 JPA/数据库，通过此接口解耦，
@@ -10,14 +9,13 @@ package com.imooc.manus.springai.session;
  * </p>
  *
  * <p><b>扩展点：</b>可替换为基于 Redis 等存储的实现。</p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 05:07:15
  */
 public interface SessionStateLoader {
 
     /**
      * 获取指定会话的当前状态字符串。
-     * 对应Python的 session.status 属性。
      * 返回值为 "PENDING"、"RUNNING"、"WAITING"、"COMPLETED" 等。
      *
      * @param sessionId 会话id
@@ -27,7 +25,6 @@ public interface SessionStateLoader {
 
     /**
      * 获取指定会话最新规划（Plan）的 JSON 序列化字符串。
-     * 对应Python的 session.get_latest_plan()。
      *
      * @param sessionId 会话id
      * @return Plan JSON 字符串，不存在时返回 null
@@ -36,7 +33,6 @@ public interface SessionStateLoader {
 
     /**
      * 更新指定会话的状态。
-     * 对应Python的 uow.session.update_status()。
      *
      * @param sessionId 会话id
      * @param status    新状态字符串（"RUNNING"/"WAITING"/"COMPLETED" 等）

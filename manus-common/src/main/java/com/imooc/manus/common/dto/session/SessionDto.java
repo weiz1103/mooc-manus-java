@@ -14,6 +14,8 @@ import java.util.Map;
 /**
  * 会话相关 DTO 集合。
  * 所有字段命名与 Python session.py schema 保持一致（JSON 序列化时使用 snake_case）。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 23:51:38
  */
 public class SessionDto {
 
@@ -51,7 +53,6 @@ public class SessionDto {
         private List<Map<String, Object>> events = new ArrayList<>();
     }
 
-    /** 聊天请求体，对应 Python ChatRequest */
     @Data @Builder @NoArgsConstructor @AllArgsConstructor
     public static class ChatRequest {
         private String message;

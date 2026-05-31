@@ -5,11 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Agent通用配置。
- * 对应Python中的 AgentConfig Pydantic BaseModel。
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 11:08:10
+ */
 public class AgentConfig {
 
     /** Agent最大迭代次数 */

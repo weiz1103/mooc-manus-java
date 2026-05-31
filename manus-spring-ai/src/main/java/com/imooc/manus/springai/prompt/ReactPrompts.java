@@ -1,7 +1,8 @@
 package com.imooc.manus.springai.prompt;
 
 /**
- * ReAct Agent 提示词模板，与 Python 版 react.py 保持一致。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 13:22:13
  */
 public final class ReactPrompts {
 

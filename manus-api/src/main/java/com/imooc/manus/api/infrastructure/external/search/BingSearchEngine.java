@@ -24,12 +24,11 @@ import java.util.Map;
 
 /**
  * Bing搜索引擎。
- * 对应Python中的 BingSearchEngine 类。
  * <p>
  * 使用Java HttpClient + Jsoup实现Bing网页搜索（类似Python的httpx + bs4）。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 17:40:17
  */
 public class BingSearchEngine implements SearchEngine {
 
@@ -48,7 +47,6 @@ public class BingSearchEngine implements SearchEngine {
 
     /**
      * 传递query+date_range使用httpClient+jsoup调用bing搜索并获取搜索结果。
-     * 对应Python的 BingSearchEngine.invoke()
      *
      * @param query     搜索关键词
      * @param dateRange 日期检索范围（可为null，如 "past_week"）

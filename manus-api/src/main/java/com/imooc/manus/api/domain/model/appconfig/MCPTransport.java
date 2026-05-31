@@ -2,9 +2,8 @@ package com.imooc.manus.api.domain.model.appconfig;
 
 /**
  * MCP传输类型枚举。
- * 对应Python中的 MCPTransport 枚举。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 21:01:25
  */
 public enum MCPTransport {
     /** 本地输入输出 */

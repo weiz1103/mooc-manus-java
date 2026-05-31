@@ -11,6 +11,8 @@ import java.util.Map;
 
 /**
  * JPA 版任务事件日志仓储。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 21:52:01
  */
 public class JpaTaskEventLogRepositoryImpl implements TaskEventLogRepository {
 

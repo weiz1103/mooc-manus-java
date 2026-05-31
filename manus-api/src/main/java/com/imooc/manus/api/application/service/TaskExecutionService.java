@@ -22,6 +22,11 @@ import java.util.Optional;
  * 任务执行生命周期服务。
  */
 @Service
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 13:23:04
+ */
 public class TaskExecutionService {
 
     private static final Logger log = LoggerFactory.getLogger(TaskExecutionService.class);

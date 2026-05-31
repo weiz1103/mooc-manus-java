@@ -21,6 +21,11 @@ import java.util.Map;
         @Index(name = "idx_task_event_log_task_created", columnList = "task_id, created_at"),
         @Index(name = "idx_task_event_log_session_created", columnList = "session_id, created_at")
 })
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 12:40:54
+ */
 public class TaskEventLogModel {
 
     @Id

@@ -12,8 +12,8 @@ import java.util.UUID;
 
 /**
  * Redis任务工厂，用于创建和管理RedisStreamTask实例。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 04:53:49
  */
 public class RedisTaskFactory {
 

@@ -9,12 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 基于内存的文件仓库实现（简化实现）。
- * 对应Python中的 SQLAlchemyFileRepository 类。
  * <p>
  * 在完整实现中，应替换为JPA持久化到files表。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 14:42:08
  */
 public class InMemoryFileRepository implements FileRepository {
 

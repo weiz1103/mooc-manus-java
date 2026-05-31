@@ -12,14 +12,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 应用程序配置属性（对应Python中的 Settings 类）。
  * 通过 application.yml 的 manus.* 绑定。
  *
- * @author thezehui@gmail.com
+
  */
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "manus")
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 17:34:33
+ */
 public class AppProperties {
 
     /** LLM 配置，统一从 Java application.yml 读取 */
@@ -101,9 +105,7 @@ public class AppProperties {
 
     @Data
     public static class SandboxProperties {
-        /** 沙箱服务固定地址（如果配置则不创建Docker容器，对应Python SANDBOX_ADDRESS） */
         private String address = "";
-        /** Docker沙箱镜像名（对应Python SANDBOX_IMAGE） */
         private String image = "mooc-manus-sandbox:latest";
         /** 沙箱容器名前缀 */
         private String namePrefix = "mooc-manus-sandbox";

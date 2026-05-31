@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * 全局异常处理器，对应 Python 中的 HTTP 异常处理机制。
  * 统一将各类异常转换为 ApiResponse 格式响应。
  */
 @RestControllerAdvice
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 06:11:55
+ */
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(SessionNotFoundException.class)

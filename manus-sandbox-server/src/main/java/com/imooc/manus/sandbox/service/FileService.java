@@ -14,18 +14,21 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * 文件服务，对应 Python Sandbox 中的 file_storage 功能。
  * 操作沙箱工作目录内的文件，提供读/写/列表能力。
  */
 @Service
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-24 23:03:46
+ */
 public class FileService {
 
     @Value("${manus.sandbox.work-dir:${java.io.tmpdir}/manus-sandbox}")
     private String workDir;
 
     /**
-     * 读取文件内容，对应 Python FileStorage.read()
      */
     public FileDto.FileReadResult readFile(String filepath) {
         Path path = resolveSafePath(filepath);
@@ -42,7 +45,6 @@ public class FileService {
     }
 
     /**
-     * 写入文件内容，自动创建父目录，对应 Python FileStorage.write()
      */
     public void writeFile(String filepath, String content) {
         Path path = resolveSafePath(filepath);
@@ -58,7 +60,6 @@ public class FileService {
     }
 
     /**
-     * 列出目录下的文件，对应 Python FileStorage.list()
      */
     public List<FileDto.FileInfo> listFiles(String directory) {
         Path dirPath = resolveSafePath(directory);

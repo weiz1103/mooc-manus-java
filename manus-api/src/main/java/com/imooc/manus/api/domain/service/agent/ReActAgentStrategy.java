@@ -14,6 +14,11 @@ import java.util.List;
  * 屏蔽 Spring AI 框架细节，使上层 {@link AgentRunner} 与具体 AI 实现解耦。</p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 12:29:14
+ */
 public class ReActAgentStrategy implements AgentStrategy {
 
     private final SpringAIPlannerReActFlow plannerFlow;

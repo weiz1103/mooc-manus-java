@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 /**
  * Spring Data JPA Repository for SessionModel.
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 05:32:13
  */
 public interface JpaSessionRepository extends JpaRepository<SessionModel, String> {
 

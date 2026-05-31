@@ -6,9 +6,8 @@ import java.io.InputStream;
 
 /**
  * 文件存储桶协议。
- * 对应Python中的 FileStorage Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 01:21:08
  */
 public interface FileStorage {
 

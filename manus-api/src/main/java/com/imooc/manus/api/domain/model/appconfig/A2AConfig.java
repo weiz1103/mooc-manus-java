@@ -8,11 +8,15 @@ import java.util.List;
 
 /**
  * A2A配置。
- * 对应Python中的 A2AConfig Pydantic BaseModel。
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 11:43:43
+ */
 public class A2AConfig {
 
     @JsonProperty("a2a_servers")

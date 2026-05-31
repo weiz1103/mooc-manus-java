@@ -30,6 +30,11 @@ import java.util.Set;
  * 使用 {@code @Transactional} 保证事件和文件在同一事务中原子写入。</p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 00:42:37
+ */
 public class EventPersister {
 
     private static final Logger log = LoggerFactory.getLogger(EventPersister.class);

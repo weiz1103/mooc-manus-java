@@ -8,7 +8,8 @@ import com.imooc.manus.common.model.ToolResult;
  * manus-spring-ai 通过此接口与沙箱基础设施解耦，
  * manus-api 负责提供具体实现（适配器）并注入 Spring 容器。
  * </p>
- * 对应 Python Sandbox Protocol。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 00:13:01
  */
 public interface SandboxPort {
 

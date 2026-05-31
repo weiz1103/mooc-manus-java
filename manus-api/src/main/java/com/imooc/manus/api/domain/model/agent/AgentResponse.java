@@ -7,6 +7,8 @@ package com.imooc.manus.api.domain.model.agent;
  * @param success 是否执行成功
  * @param content AI 返回的原始文本/思考过程
  * @param data    结构化解析后的对象 (强类型)
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 07:11:15
  */
 public record AgentResponse<T>(
         boolean success,

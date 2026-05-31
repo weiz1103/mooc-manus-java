@@ -8,11 +8,15 @@ import java.util.Map;
 
 /**
  * MCP服务配置。
- * 对应Python中的 MCPServerConfig Pydantic BaseModel。
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 03:10:36
+ */
 public class MCPServerConfig {
 
     /** 传输协议，默认为streamable_http */

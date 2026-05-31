@@ -5,11 +5,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-/** 标题事件：当 AI 生成会话标题时发出，用于更新侧边栏显示，对应 Python TitleEvent。 */
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 12:18:40
+ */
 public class TitleEvent extends BaseEvent {
 
     private String title = "";

@@ -7,11 +7,15 @@ import java.util.UUID;
 
 /**
  * A2A服务配置。
- * 对应Python中的 A2AServerConfig Pydantic BaseModel。
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 14:21:38
+ */
 public class A2AServerConfig {
 
     /** 唯一标识 */

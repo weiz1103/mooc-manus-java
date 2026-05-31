@@ -7,9 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * 基于Redis Stream的任务流载体。
- * 对应Python中的 RedisStreamTask 类，现在仅作为 Stream 的管道。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 05:00:41
  */
 public class RedisStreamTask implements Task {
 

@@ -5,11 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 应用配置信息，包含AgentConfig、LLM提供商配置、MCP配置、A2A配置。
- * 对应Python中的 AppConfig Pydantic BaseModel。
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 10:13:18
+ */
 public class AppConfig {
 
     /** 语言模型配置 */

@@ -8,10 +8,11 @@ import org.springframework.ai.tool.annotation.ToolParam;
 /**
  * 浏览器工具服务，提供页面导航、点击、输入、滚动、JS 执行等能力。
  * <p>
- * 对应 Python 版 BrowserTool 中的所有工具方法。
  * </p>
  *
  * <p><b>扩展点：</b> 注入不同的 {@link BrowserPort} 实现（如 Selenium、Playwright）即可切换底层驱动。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 02:34:13
  */
 public class BrowserToolService {
 

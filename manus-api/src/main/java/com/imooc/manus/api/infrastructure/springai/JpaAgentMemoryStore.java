@@ -14,14 +14,13 @@ import java.util.function.Supplier;
 
 /**
  * 基于 JPA（数据库）的 AgentMemoryStore 实现。
- * 对应Python中的 uow.session.get_memory / save_memory 操作。
  *
  * <p>
  * 通过 IUnitOfWork 将 Agent 记忆持久化到数据库，保证会话间状态一致性。
  * 扩展 manus-spring-ai 的 AgentMemoryStore 接口，提供 DB 后端。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 00:27:03
  */
 public class JpaAgentMemoryStore implements AgentMemoryStore {
 
@@ -34,7 +33,6 @@ public class JpaAgentMemoryStore implements AgentMemoryStore {
     /**
      * 构造函数
      *
-     * @param uowFactory UoW 工厂（对应Python的 uow_factory: Callable[[], IUnitOfWork]）
      */
     public JpaAgentMemoryStore(Supplier<IUnitOfWork> uowFactory) {
         this.uowFactory = uowFactory;
@@ -66,5 +64,4 @@ public class JpaAgentMemoryStore implements AgentMemoryStore {
         }
     }
 }
-
 

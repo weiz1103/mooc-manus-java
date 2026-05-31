@@ -23,6 +23,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * Metrics/Tracing/OLAP 存储后端。</p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 07:47:13
+ */
 public class InMemoryExecutionObservationSink implements ExecutionObservationSink {
 
     private static final Logger log = LoggerFactory.getLogger(InMemoryExecutionObservationSink.class);

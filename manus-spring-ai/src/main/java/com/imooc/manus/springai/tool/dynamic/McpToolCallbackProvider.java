@@ -20,6 +20,8 @@ import java.util.Map;
  * <p>
  * <b>扩展点：</b> 重写 {@link #buildToolCallbacks()} 可在工具调用前后注入日志、鉴权等横切逻辑。
  * </p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 19:09:43
  */
 public class McpToolCallbackProvider {
 

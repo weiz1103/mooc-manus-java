@@ -2,9 +2,8 @@ package com.imooc.manus.api.domain.model.session;
 
 /**
  * 会话状态类型枚举。
- * 对应Python中的 SessionStatus 枚举。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 10:32:47
  */
 public enum SessionStatus {
     /** 等待任务 */

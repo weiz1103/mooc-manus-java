@@ -19,6 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
  * 仅处理会话生命周期的变更操作（创建、删除、停止）。
  */
 @Service
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 01:49:20
+ */
 public class SessionCommandService {
 
     private static final Logger log = LoggerFactory.getLogger(SessionCommandService.class);

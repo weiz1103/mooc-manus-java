@@ -10,13 +10,17 @@ import java.util.UUID;
 /**
  * 规划中每一个子步骤/子任务模型。
  * <p>
- * 对应Python中的 Step Pydantic BaseModel。
  * 使用可变POJO（非record），因为步骤状态在执行过程中会被修改。
  * </p>
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 08:28:35
+ */
 public class Step {
 
     /** 子任务id */

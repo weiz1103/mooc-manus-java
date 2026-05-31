@@ -21,6 +21,11 @@ import java.util.Map;
         @Index(name = "idx_task_execution_status", columnList = "status"),
         @Index(name = "idx_task_execution_loop", columnList = "loop_detected")
 })
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 23:11:22
+ */
 public class TaskExecutionModel {
 
     @Id

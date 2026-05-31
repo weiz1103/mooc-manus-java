@@ -13,13 +13,12 @@ import java.util.*;
 
 /**
  * 基于OpenAI SDK/兼容OpenAI格式的LLM调用类。
- * 对应Python中的 OpenAILLM 类。
  * <p>
  * 使用Spring RestClient（同步HTTP）调用OpenAI Chat Completions API，
  * 运行在Java虚拟线程中，因此阻塞调用不影响系统响应性。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 13:59:13
  */
 public class OpenAILLM implements LLM {
 
@@ -38,7 +37,6 @@ public class OpenAILLM implements LLM {
      * @param llmConfig LLM配置
      */
     public OpenAILLM(LLMConfig llmConfig) {
-        // 1.初始化RestClient（对应Python的AsyncOpenAI客户端创建）
         this.restClient = RestClient.builder()
                 .baseUrl(llmConfig.getBaseUrl())
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + llmConfig.getApiKey())
@@ -62,7 +60,6 @@ public class OpenAILLM implements LLM {
 
     /**
      * 使用RestClient向LLM发起请求（该步骤在虚拟线程中阻塞执行）。
-     * 对应Python的 OpenAILLM.invoke()
      *
      * @param messages       消息列表（OpenAI格式）
      * @param tools          工具列表（OpenAI function schema格式），可为null

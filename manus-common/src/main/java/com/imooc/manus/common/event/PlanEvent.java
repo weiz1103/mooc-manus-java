@@ -9,13 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 计划事件，对应 Python PlanEvent。
  * 包含完整的计划结构和状态，前端用此渲染任务进度面板。
  */
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 18:46:21
+ */
 public class PlanEvent extends BaseEvent {
 
     private PlanData plan;
@@ -52,7 +56,6 @@ public class PlanEvent extends BaseEvent {
         private Boolean success;
     }
 
-    /** 计划事件状态枚举，对应 Python PlanEventStatus */
     public enum PlanEventStatus {
         CREATED("created"), UPDATED("updated"), COMPLETED("completed");
 

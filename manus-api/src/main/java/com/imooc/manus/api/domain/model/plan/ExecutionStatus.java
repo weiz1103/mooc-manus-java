@@ -8,10 +8,9 @@ import java.util.Arrays;
 /**
  * 规划/任务执行状态枚举。
  * <p>
- * 对应Python中的 ExecutionStatus 枚举。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 17:22:59
  */
 public enum ExecutionStatus {
     /** 空闲or等待中 */

@@ -6,9 +6,8 @@ import java.util.Optional;
 
 /**
  * 文件模型数据仓库。
- * 对应Python中的 FileRepository Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 02:14:44
  */
 public interface FileRepository {
 

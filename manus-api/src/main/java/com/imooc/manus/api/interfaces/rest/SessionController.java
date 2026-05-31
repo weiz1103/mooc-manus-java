@@ -33,6 +33,11 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping({"/api/sessions", "/api/v1/sessions"})
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 11:37:43
+ */
 public class SessionController {
 
     private static final Logger log = LoggerFactory.getLogger(SessionController.class);

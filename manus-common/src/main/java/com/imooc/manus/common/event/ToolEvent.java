@@ -8,13 +8,17 @@ import lombok.experimental.SuperBuilder;
 import java.util.Map;
 
 /**
- * 工具调用事件，对应 Python ToolEvent。
  * 包含工具名、函数名、参数和结果，前端用此渲染工具调用动画和结果展示。
  */
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 14:57:13
+ */
 public class ToolEvent extends BaseEvent {
 
     private String toolCallId;

@@ -8,10 +8,11 @@ import org.springframework.ai.tool.annotation.ToolParam;
 /**
  * Shell 工具服务，提供命令执行、输出读取、进程管理等能力。
  * <p>
- * 对应 Python 版 ShellTool 中的所有工具方法。
  * </p>
  *
  * <p><b>扩展点：</b> 覆盖工具方法可添加安全审计、资源限制等横切关注点。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 01:30:36
  */
 public class ShellToolService {
 

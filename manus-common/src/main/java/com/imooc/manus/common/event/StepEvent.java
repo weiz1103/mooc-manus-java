@@ -6,13 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 步骤事件：当单个计划步骤状态变化时发出，对应 Python StepEvent。
  * 前端用此高亮显示正在执行的步骤。
  */
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 11:41:06
+ */
 public class StepEvent extends BaseEvent {
 
     private StepData step;

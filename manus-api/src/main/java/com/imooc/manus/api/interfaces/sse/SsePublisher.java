@@ -14,6 +14,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * <p>封装 {@link SseEmitter} 的发送细节，包括客户端断开检测和异常处理。
  * Controller 只需调用 {@link #publish(BaseEvent)}，无需关心底层 IO 细节。
  * 线程安全：可在虚拟线程中安全调用。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 22:59:51
  */
 public class SsePublisher {
 

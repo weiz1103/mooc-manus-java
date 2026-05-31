@@ -5,7 +5,6 @@ import java.util.Map;
 
 /**
  * Agent记忆持久化接口。
- * 对应Python中的 _uow.session.get_memory / save_memory 操作。
  *
  * <p>
  * 设计原则：
@@ -15,8 +14,8 @@ import java.util.Map;
  * </p>
  *
  * <p><b>扩展点：</b>可通过实现此接口替换为 Redis、DB 等持久化后端。</p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 07:41:19
  */
 public interface AgentMemoryStore {
 
@@ -41,7 +40,6 @@ public interface AgentMemoryStore {
 
     /**
      * 压缩指定Agent的记忆，移除重量级内容（浏览器页面内容等），以减少 Token 消耗。
-     * 对应Python的 Memory.compact()。
      * 默认实现为空操作，子类可按需重写。
      *
      * @param sessionId 会话id

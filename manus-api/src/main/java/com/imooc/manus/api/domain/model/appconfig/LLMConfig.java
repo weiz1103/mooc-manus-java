@@ -5,11 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * LLM提供商配置。
- * 对应Python中的 LLMConfig Pydantic BaseModel。
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 18:10:10
+ */
 public class LLMConfig {
 
     /** 模型基础URL地址 */

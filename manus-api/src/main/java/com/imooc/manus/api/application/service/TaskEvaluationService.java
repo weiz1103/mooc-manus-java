@@ -14,6 +14,11 @@ import java.util.Map;
  * 离线评估与回放服务。
  */
 @Service
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 05:32:44
+ */
 public class TaskEvaluationService {
 
     private final TaskExecutionService taskExecutionService;

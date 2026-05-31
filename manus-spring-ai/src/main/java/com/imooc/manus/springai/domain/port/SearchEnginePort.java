@@ -4,7 +4,8 @@ import com.imooc.manus.common.model.ToolResult;
 
 /**
  * 搜索引擎服务端口（Port / Anti-Corruption Layer）。
- * 对应 Python SearchEngine Protocol。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 08:25:01
  */
 public interface SearchEnginePort {
 

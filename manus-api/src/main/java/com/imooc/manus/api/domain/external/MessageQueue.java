@@ -2,9 +2,8 @@ package com.imooc.manus.api.domain.external;
 
 /**
  * 消息队列协议。
- * 对应Python中的 MessageQueue Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 05:56:27
  */
 public interface MessageQueue {
 

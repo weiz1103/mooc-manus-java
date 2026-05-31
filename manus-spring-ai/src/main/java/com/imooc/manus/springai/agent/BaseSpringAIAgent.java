@@ -20,7 +20,6 @@ import java.util.function.Consumer;
 
 /**
  * Spring AI 基础 Agent 抽象类。
- * 对应Python中的 BaseAgent 类。
  *
  * <p>
  * 设计要点：
@@ -29,8 +28,8 @@ import java.util.function.Consumer;
  * - 使用 internalToolExecutionEnabled(false) 禁用 ChatClient 自动工具执行，实现手动工具调用循环
  * - 工具调用循环中通过 Consumer&lt;BaseEvent&gt; 回调发送事件，替代Python的 async generator
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 04:08:54
  */
 public abstract class BaseSpringAIAgent {
 
@@ -73,7 +72,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 获取 Agent 名称（用于记忆存储的 key）。
-     * 对应Python的 BaseAgent.name。
      *
      * @return Agent 名称
      */
@@ -81,7 +79,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 获取 Agent 的系统预设 prompt。
-     * 对应Python的 BaseAgent._system_prompt。
      *
      * @return 系统 prompt 字符串
      */
@@ -89,7 +86,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 调用 LLM 并手动处理工具调用循环，向 emitter 发送事件。
-     * 对应Python的 BaseAgent.invoke()。
      *
      * <p>
      * 完整流程：
@@ -106,7 +102,6 @@ public abstract class BaseSpringAIAgent {
      * @param query           本轮用户/内部查询文本
      * @param responseFormat  响应格式（"json_object" 或 null）
      * @param toolChoice      工具选择策略（"none" 或 null 表示 auto）
-     * @param emitter         事件发射器，对应Python的 yield
      * @return 最终 AssistantMessage（内容消息），null 表示等待用户输入或出错
      */
     protected AssistantMessage invokeLlm(
@@ -145,7 +140,6 @@ public abstract class BaseSpringAIAgent {
             optionsBuilder.toolChoice("none");
         }
 
-        // 5. 工具调用迭代循环（对应Python的 max_iterations 循环）
         int iterations = 0;
         while (iterations < config.maxIterations()) {
             // 5.1 调用 ChatClient，获取 AssistantMessage（proxyToolCalls=true，不自动执行工具）
@@ -169,7 +163,6 @@ public abstract class BaseSpringAIAgent {
                 return assistantMsg;
             }
 
-            // 5.4 处理工具调用（对应Python的 _invoke_llm 中的 tool_calls[:1] 限制）
             // Python 中每次只处理一个工具调用
             AssistantMessage.ToolCall toolCall = toolCalls.get(0);
             String toolCallId = toolCall.id() != null ? toolCall.id() : UUID.randomUUID().toString();
@@ -185,7 +178,6 @@ public abstract class BaseSpringAIAgent {
                         .attachments(parseAttachments(functionArgs.get("attachments")))
                         .build());
             } else {
-                // 非消息类工具，发送工具调用开始事件（对应Python的 yield ToolEvent(CALLING)）
                 emitter.accept(ToolEvent.builder()
                         .toolCallId(toolCallId)
                         .toolName(extractToolSetName(functionName))
@@ -245,7 +237,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 带重试的 ChatClient 调用。
-     * 对应Python的 BaseAgent._invoke_llm 中的重试循环。
      *
      * @param messages 消息列表
      * @param options  ChatClient 选项
@@ -263,7 +254,6 @@ public abstract class BaseSpringAIAgent {
                         .call();
                 ChatResponse response = spec.chatResponse();
 
-                // 检查是否返回空内容（对应Python的空回复重试逻辑）
                 AssistantMessage output = response.getResult().getOutput();
                 if (output.getText() == null
                         && (output.getToolCalls() == null || output.getToolCalls().isEmpty())) {
@@ -294,7 +284,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 执行指定工具回调。
-     * 对应Python的 BaseAgent._invoke_tool()。
      *
      * @param functionName 函数名称
      * @param argsJson     JSON 格式的参数字符串
@@ -335,7 +324,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 回滚 Agent 记忆，确保消息列表格式正确，避免 AI（工具调用消息）后直接接上人类消息。
-     * 对应Python的 BaseAgent.roll_back()。
      *
      * @param message 最新用户消息（用于处理 message_ask_user 的工具响应）
      */
@@ -385,7 +373,6 @@ public abstract class BaseSpringAIAgent {
 
     /**
      * 压缩 Agent 记忆，移除重量级内容（浏览器页面等）以减少 Token 消耗。
-     * 对应Python的 BaseAgent.compact_memory()。
      */
     public void compactMemory() {
         memoryStore.compact(sessionId, getName());

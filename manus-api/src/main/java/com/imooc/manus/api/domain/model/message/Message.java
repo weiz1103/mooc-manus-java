@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * 用户传递的消息Domain模型。
  * <p>
- * 对应Python中的 Message Pydantic BaseModel。
  * 包含用户发送的文本消息以及上传的附件ID列表。
  * </p>
  *
  * @param message     用户发送的消息内容
  * @param attachments 用户发送的附件（文件ID列表）
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 20:26:12
  */
 public record Message(
         String message,

@@ -18,6 +18,8 @@ import java.util.List;
  * <p>
  * <b>扩展点：</b> 可在 {@link A2APort} 实现层添加 Agent 服务发现、熔断降级等能力。
  * </p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 04:48:48
  */
 public class A2AToolCallbackProvider {
 

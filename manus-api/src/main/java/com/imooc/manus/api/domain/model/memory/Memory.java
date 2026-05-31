@@ -13,14 +13,18 @@ import java.util.Optional;
 /**
  * 记忆类，定义Agent的记忆基础信息。
  * <p>
- * 对应Python中的 Memory Pydantic BaseModel。
  * messages字段使用 List&lt;Map&lt;String, Object&gt;&gt; 存储，
  * 与OpenAI API的消息格式完全对应。
  * </p>
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 18:13:00
+ */
 public class Memory {
 
     private static final Logger logger = LoggerFactory.getLogger(Memory.class);
@@ -93,7 +97,6 @@ public class Memory {
     /**
      * 记忆压缩，将记忆中已经执行的工具（搜索/网页源码获取/浏览器访问结果等）
      * 这类已经执行过的消息进行压缩检索。
-     * 对应Python的 Memory.compact()
      */
     public void compact() {
         // 1.循环遍历所有的消息列表

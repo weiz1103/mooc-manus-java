@@ -26,6 +26,11 @@ import java.time.LocalDateTime;
  * </p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 13:07:17
+ */
 public class SessionStateSync {
 
     private static final Logger log = LoggerFactory.getLogger(SessionStateSync.class);

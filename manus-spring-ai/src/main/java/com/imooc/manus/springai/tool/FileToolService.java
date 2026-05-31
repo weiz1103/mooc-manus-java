@@ -9,11 +9,12 @@ import org.springframework.ai.tool.annotation.ToolParam;
  * 文件工具服务，提供文件读写、替换、搜索、查找等能力。
  * <p>
  * 使用 Spring AI {@code @Tool} 注解暴露为 LLM 可调用工具，
- * 对应 Python 版 FileTool 中的所有工具方法。
  * </p>
  *
  * <p><b>扩展点：</b> 继承此类并覆盖对应方法可自定义工具行为，
  * 或直接向 {@link SandboxPort} 注入不同实现以切换底层存储。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 13:21:00
  */
 public class FileToolService {
 

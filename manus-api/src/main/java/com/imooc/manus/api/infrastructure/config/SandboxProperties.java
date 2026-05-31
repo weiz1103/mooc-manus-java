@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "manus.sandbox-client")
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 17:46:55
+ */
 public class SandboxProperties {
 
     /** 沙箱服务器基础 URL */

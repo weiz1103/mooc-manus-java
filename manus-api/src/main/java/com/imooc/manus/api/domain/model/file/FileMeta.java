@@ -5,7 +5,6 @@ import java.util.UUID;
 /**
  * 文件信息Domain模型，用于记录Manus/Human上传or生成的文件。
  * <p>
- * 对应Python中的 File Pydantic BaseModel。
  * 使用Java record保证不可变性。
  * </p>
  *
@@ -16,7 +15,8 @@ import java.util.UUID;
  * @param extension 扩展名
  * @param mimeType  MIME类型
  * @param size      文件大小（字节）
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 12:11:02
  */
 public record FileMeta(
         String id,

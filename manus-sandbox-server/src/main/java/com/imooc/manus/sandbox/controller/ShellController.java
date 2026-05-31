@@ -7,11 +7,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Shell 控制器，对应 Python sandbox_routes 中的 shell 相关端点。
  */
 @RestController
 @RequestMapping("/api/shell")
 @RequiredArgsConstructor
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 08:14:07
+ */
 public class ShellController {
 
     private final ShellService shellService;

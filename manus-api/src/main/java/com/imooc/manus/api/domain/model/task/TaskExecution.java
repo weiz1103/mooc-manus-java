@@ -12,6 +12,11 @@ import java.util.Map;
  * 持久化的任务执行聚合。
  */
 @Data
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 23:31:01
+ */
 public class TaskExecution {
 
     private String taskId;

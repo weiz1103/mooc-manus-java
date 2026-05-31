@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 18:57:03
+ */
 public class BrowserDto {
 
     @Data @Builder @NoArgsConstructor @AllArgsConstructor

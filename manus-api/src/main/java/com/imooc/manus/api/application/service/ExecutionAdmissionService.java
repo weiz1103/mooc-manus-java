@@ -23,6 +23,11 @@ import java.util.concurrent.ConcurrentMap;
  * <p>当前先实现会话级限流与日配额，后续可平滑升级为用户级 / 租户级策略。</p>
  */
 @Service
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 17:42:39
+ */
 public class ExecutionAdmissionService {
 
     private final TaskExecutionService taskExecutionService;

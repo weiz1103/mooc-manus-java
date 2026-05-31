@@ -10,12 +10,16 @@ import java.util.Map;
 
 /**
  * 会话JPA模型，对应数据库中的sessions表。
- * 对应Python中的 SessionModel SQLAlchemy模型。
  *
- * @author thezehui@gmail.com
+
  */
 @Entity
 @Table(name = "sessions")
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 01:14:54
+ */
 public class SessionModel {
 
     @Id

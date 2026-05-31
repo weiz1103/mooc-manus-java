@@ -16,12 +16,16 @@ import java.time.Duration;
 import java.util.List;
 
 /**
- * 沙箱 HTTP 客户端，对应 Python Sandbox 抽象类的具体实现。
  * 通过 HTTP 调用 manus-sandbox-server 的各个接口。
  * 使用 Spring 6 RestClient（同步，由虚拟线程支撑，高性能）。
  */
 @Component
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 17:07:51
+ */
 public class SandboxClient {
 
     private final RestClient restClient;

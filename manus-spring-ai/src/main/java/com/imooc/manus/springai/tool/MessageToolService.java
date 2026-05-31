@@ -10,12 +10,13 @@ import java.util.Map;
 /**
  * 消息工具服务，提供向用户发送通知消息和询问消息的能力。
  * <p>
- * 对应 Python 版 MessageTool。
  * </p>
  * <p>
  * <b>扩展点：</b> 覆盖 {@link #messageNotifyUser} 和 {@link #messageAskUser} 可接入
  * 推送通知、邮件等渠道。
  * </p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 15:58:49
  */
 public class MessageToolService {
 

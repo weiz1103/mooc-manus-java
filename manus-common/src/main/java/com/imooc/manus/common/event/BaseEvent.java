@@ -12,7 +12,6 @@ import java.util.UUID;
 
 /**
  * 所有 Agent 事件的抽象基类。
- * 使用 Jackson 多态序列化，通过 "type" 字段区分子类型，与 Python 版 BaseEvent 保持协议兼容。
  */
 @Data
 @SuperBuilder
@@ -29,9 +28,13 @@ import java.util.UUID;
     @JsonSubTypes.Type(value = DoneEvent.class,    name = "done")
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 07:49:18
+ */
 public abstract class BaseEvent {
 
-    /** 事件唯一 ID，对应 Python event.id */
     private String id = UUID.randomUUID().toString();
 
     /** 事件创建时间 */

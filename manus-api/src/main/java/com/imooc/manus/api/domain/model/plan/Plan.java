@@ -12,13 +12,17 @@ import java.util.UUID;
 /**
  * 规划Domain模型，用于存储用户传递消息拆分出来的子任务/子步骤。
  * <p>
- * 对应Python中的 Plan Pydantic BaseModel。
  * 使用可变POJO，因为规划中的steps在执行过程中会被更新。
  * </p>
  *
- * @author thezehui@gmail.com
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 21:50:27
+ */
 public class Plan {
 
     /** 计划id */
@@ -76,7 +80,6 @@ public class Plan {
 
     /**
      * 获取需要执行的下一个步骤（第一个未完成的步骤）。
-     * 对应Python的 Plan.get_next_step()
      *
      * @return 下一个需要执行的步骤，如果没有则返回empty
      */

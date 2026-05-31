@@ -5,6 +5,8 @@ import com.imooc.manus.common.model.ToolResult;
 /**
  * A2A（Agent-to-Agent）工具端口。
  * 提供远程 Agent 卡片查询与调用能力。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 03:43:55
  */
 public interface A2APort {
 

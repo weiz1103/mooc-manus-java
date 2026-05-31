@@ -8,12 +8,11 @@ import jakarta.persistence.EntityTransaction;
 
 /**
  * JPA实现的Unit of Work。
- * 对应Python中的 SQLAlchemyUoW 类。
  * <p>
  * 使用try-with-resources语法替代Python的 async with uow。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 18:09:13
  */
 public class JpaUnitOfWork implements IUnitOfWork {
 

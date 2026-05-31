@@ -32,6 +32,8 @@ import java.util.*;
  *       在 {@link #buildAll()} 中调用其 {@code buildToolCallbacks()}。</li>
  *   <li>覆盖消息工具名称：修改 {@link #buildMessageToolCallbacks()} 即可。</li>
  * </ul>
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 20:15:13
  */
 public class ToolCallbackRegistry {
 

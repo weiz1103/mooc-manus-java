@@ -8,14 +8,18 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * 执行步骤模型，对应Python中的 Step Pydantic BaseModel。
  * 包含步骤id、描述、执行状态、执行结果等信息。
  *
- * @author thezehui@gmail.com
+
  */
 @Data
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 11:41:46
+ */
 public class Step {
 
     /** 步骤标识符 */
@@ -26,7 +30,6 @@ public class Step {
     @JsonProperty("description")
     private String description;
 
-    /** 执行状态，对应Python的 ExecutionStatus */
     @JsonProperty("status")
     private ExecutionStatus status = ExecutionStatus.PENDING;
 
@@ -48,7 +51,6 @@ public class Step {
 
     /**
      * 判断步骤是否已完成（完成或失败均视为完成）。
-     * 对应Python的 step.done 属性。
      *
      * @return 是否已完成
      */

@@ -12,14 +12,18 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * 规划模型，对应Python中的 Plan Pydantic BaseModel。
  * 包含任务标题、目标、语言、步骤列表、状态等信息。
  *
- * @author thezehui@gmail.com
+
  */
 @Data
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 08:56:31
+ */
 public class Plan {
 
     /** 规划id */
@@ -56,7 +60,6 @@ public class Plan {
 
     /**
      * 获取下一个需要执行的子步骤（第一个未完成的步骤）。
-     * 对应Python的 Plan.get_next_step()。
      *
      * @return 下一个待执行步骤，如果所有步骤已完成则返回 empty
      */

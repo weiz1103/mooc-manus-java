@@ -12,11 +12,10 @@ import java.util.*;
 /**
  * 会话领域模型。
  * <p>
- * 对应Python中的 Session Pydantic BaseModel。
  * 使用可变POJO，因为会话状态在执行过程中会被修改。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 16:55:23
  */
 public class Session {
 
@@ -108,7 +107,6 @@ public class Session {
     /**
      * 获取会话中的最新规划。
      * 倒序遍历会话中所有事件消息，找到第一个PlanEvent并提取规划后返回。
-     * 对应Python的 Session.get_latest_plan()
      *
      * @return 最新规划（Optional）
      */

@@ -29,6 +29,11 @@ import java.util.List;
  * 防止会话永久锁死在执行中。</p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 17:11:26
+ */
 public class AgentRunner {
 
     private static final Logger log = LoggerFactory.getLogger(AgentRunner.class);

@@ -8,6 +8,8 @@ import java.util.Optional;
 
 /**
  * 任务执行仓储。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 01:55:08
  */
 public interface TaskExecutionRepository {
 

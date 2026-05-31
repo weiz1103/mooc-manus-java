@@ -10,6 +10,8 @@ import java.util.List;
  *
  * <p>与 Task.output/input stream 不同，此抽象用于“提交任务给 worker 消费”，
  * 解决当前 HTTP 请求线程直接执行 Agent 的问题。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 21:09:13
  */
 public interface TaskDispatchQueue {
 

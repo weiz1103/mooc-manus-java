@@ -20,6 +20,11 @@ import org.springframework.stereotype.Component;
  * 扩展对应逻辑，无需修改 Controller 或 Service。</p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-24 21:09:09
+ */
 public class AgentEventBus {
 
     private final EventPersister eventPersister;

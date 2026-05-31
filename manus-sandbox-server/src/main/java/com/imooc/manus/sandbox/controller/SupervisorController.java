@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * 沙箱监控控制器，对应 Python supervisor 功能。
  * 提供健康检查端点，供 manus-api 的 SandboxClient 探活。
  */
 @RestController
 @RequestMapping("/api/supervisor")
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 10:37:37
+ */
 public class SupervisorController {
 
     @GetMapping("/health")

@@ -12,6 +12,11 @@ import java.util.Map;
  * 核心逻辑：利用 Spring AI 的 SystemPromptTemplate 动态注入变量，生成不可变的 Message 对象
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 21:10:14
+ */
 public class PromptManager {
 
     /**

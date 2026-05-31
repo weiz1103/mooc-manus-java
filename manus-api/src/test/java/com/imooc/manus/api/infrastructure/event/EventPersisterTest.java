@@ -12,6 +12,11 @@ import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 19:03:59
+ */
 class EventPersisterTest {
 
     @Test
@@ -64,6 +69,4 @@ class EventPersisterTest {
         Mockito.verify(taskEventLogRepository, Mockito.never()).appendIfAbsent(Mockito.any());
     }
 }
-
-
 

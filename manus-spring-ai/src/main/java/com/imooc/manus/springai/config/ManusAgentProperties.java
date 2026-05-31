@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Spring AI Agent 配置属性。
  * <p>
- * 对应 Python 版 AgentConfig，通过 Spring Boot 配置文件绑定。
  * 配置前缀：{@code manus.agent}
  * </p>
  *
@@ -21,6 +20,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * <p><b>扩展点：</b> 新增配置项后在此类中添加对应字段并更新 application.yml 默认值。</p>
  */
 @ConfigurationProperties(prefix = "manus.agent")
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 16:04:36
+ */
 public class ManusAgentProperties {
 
     /** Agent 最大迭代次数（每轮对话中工具调用 + 思考的最大轮次） */

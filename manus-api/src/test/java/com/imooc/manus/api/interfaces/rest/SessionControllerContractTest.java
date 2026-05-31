@@ -32,6 +32,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(SessionController.class)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 07:23:13
+ */
 class SessionControllerContractTest {
 
     @Autowired

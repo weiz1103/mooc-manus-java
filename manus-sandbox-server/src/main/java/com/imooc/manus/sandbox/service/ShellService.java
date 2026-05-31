@@ -17,7 +17,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Shell 执行服务，对应 Python Sandbox 中的 shell 相关功能。
  *
  * <p>关键改进（相较上版）：
  * <ul>
@@ -29,9 +28,13 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 23:35:04
+ */
 public class ShellService {
 
-    /** 每个执行会话的状态，对应 Python shell session */
     @Data
     @Builder
     private static class ShellSession {
@@ -51,7 +54,6 @@ public class ShellService {
     private static final boolean WINDOWS = System.getProperty("os.name", "").toLowerCase().contains("win");
 
     /**
-     * 执行 Shell 命令，对应 Python sandbox.run_command()
      */
     public ShellDto.ShellExecuteResult executeCommand(String sessionId, String execDir, String command) {
         log.info("[{}] Executing: {}", sessionId, command);
@@ -144,7 +146,6 @@ public class ShellService {
     }
 
     /**
-     * 读取指定会话的 Shell 输出，对应 Python sandbox.read_output()
      */
     public ShellDto.ShellReadResult readOutput(String sessionId) {
         ShellSession session = sessions.get(sessionId);

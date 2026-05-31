@@ -13,9 +13,8 @@ import java.util.Map;
 
 /**
  * 基于Redis Stream的消息队列实现。
- * 对应Python中的 RedisStreamMessageQueue 类。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 01:21:39
  */
 public class RedisStreamMessageQueue implements MessageQueue {
 
@@ -29,7 +28,6 @@ public class RedisStreamMessageQueue implements MessageQueue {
      * 构造函数，完成Redis Stream消息队列的初始化
      *
      * @param redisTemplate Redis模板
-     * @param streamKey     Stream的key（对应Python的stream_name）
      */
     public RedisStreamMessageQueue(RedisTemplate<String, String> redisTemplate, String streamKey) {
         this.redisTemplate = redisTemplate;

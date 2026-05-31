@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 工具调用统一结果包装器，对应 Python ToolResult。
  * 封装工具执行的成功/失败状态和返回数据。
  *
  * @param <T> 工具返回数据的类型
@@ -17,6 +16,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 18:51:31
+ */
 public class ToolResult<T> {
 
     private boolean success;

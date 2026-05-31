@@ -9,6 +9,8 @@ import java.util.Optional;
  *
  * <p>不改变主链路业务语义，只负责采集任务执行指标、循环信号和终止结果，
  * 供后续 metrics / tracing / evaluation 扩展。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 07:36:31
  */
 public interface ExecutionObservationSink {
 

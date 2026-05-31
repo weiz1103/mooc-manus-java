@@ -6,12 +6,11 @@ import java.util.Map;
 /**
  * 用于Agent应用中与LLM进行交互的接口协议。
  * <p>
- * 对应Python中的 LLM Protocol。
  * 所有方法均为同步（运行在虚拟线程中，不影响响应性）。
  * messages使用 List&lt;Map&lt;String, Object&gt;&gt; 对应OpenAI API原始格式。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 03:21:19
  */
 public interface LLM {
 

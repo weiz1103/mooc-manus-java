@@ -38,6 +38,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(ManusAgentProperties.class)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 12:06:01
+ */
 public class ManusSpringAIAutoConfiguration {
 
     // ─────────────────────────────────────────────

@@ -11,6 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/file")
 @RequiredArgsConstructor
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 22:36:37
+ */
 public class FileController {
 
     private final FileService fileService;

@@ -9,6 +9,8 @@ import java.util.Map;
  * MCP（Model Context Protocol）工具端口。
  * manus-spring-ai 通过此接口调用外部 MCP 工具，
  * 具体的 MCP 客户端管理由 manus-api 层注入。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 04:57:09
  */
 public interface McpPort {
 

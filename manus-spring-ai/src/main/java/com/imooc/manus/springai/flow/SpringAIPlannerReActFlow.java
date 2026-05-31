@@ -22,7 +22,6 @@ import java.util.function.Consumer;
 
 /**
  * Spring AI 规划与执行流（PlannerReAct Flow）。
- * 对应Python中的 PlannerReActFlow 类。
  *
  * <p>
  * 多Agent系统/flow = PlannerAgent + ReActAgent
@@ -40,8 +39,8 @@ import java.util.function.Consumer;
  * - 可替换 SessionStateLoader 实现
  * - 可添加自定义 ToolCallback 列表
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 13:59:38
  */
 public class SpringAIPlannerReActFlow {
 
@@ -56,7 +55,6 @@ public class SpringAIPlannerReActFlow {
 
     /**
      * 构造函数，完成规划与执行流的初始化。
-     * 对应Python的 PlannerReActFlow.__init__()
      *
      * @param chatClient          Spring AI ChatClient（已配置好 model 等参数）
      * @param toolCallbacks       工具回调列表（FileTool、ShellTool、BrowserTool 等）
@@ -80,7 +78,6 @@ public class SpringAIPlannerReActFlow {
 
     /**
      * 传递消息，运行流，在六步调用 planner&react 智能体组合完成任务并返回对应事件。
-     * 对应Python的 PlannerReActFlow.invoke()。
      *
      * <p>返回 Flux&lt;BaseEvent&gt; 以支持响应式流式处理，内部同步执行（通过 Flux.create 包装）。</p>
      *
@@ -109,7 +106,6 @@ public class SpringAIPlannerReActFlow {
 
     /**
      * 核心流程执行方法（同步阻塞）。
-     * 1:1 对应Python的 PlannerReActFlow.invoke() 的 while True 循环。
      *
      * @param sessionId    会话id
      * @param message      用户消息文本
@@ -119,7 +115,6 @@ public class SpringAIPlannerReActFlow {
     private void runFlow(String sessionId, String message, List<String> attachPaths, Consumer<BaseEvent> emitter) {
         String safeMessage = message != null ? message : "";
 
-        // 1. 调用会话仓库查询会话是否存在（对应Python的 await self._uow.session.get_by_id）
         String sessionStatus = sessionStateLoader.getSessionStatus(sessionId);
 
         // 2. 判断会话的状态是不是空闲
@@ -149,7 +144,6 @@ public class SpringAIPlannerReActFlow {
             flowStatus = FlowStatus.IDLE;
         }
 
-        // 4. 更新会话状态为运行中（对应Python的 await self._uow.session.update_status(RUNNING)）
         sessionStateLoader.updateSessionStatus(sessionId, "RUNNING");
 
         // 5. 获取当前会话中最新事件（已有的 Plan）
@@ -164,7 +158,6 @@ public class SpringAIPlannerReActFlow {
         SpringAIPlannerAgent plannerAgent = createPlannerAgent(sessionId);
         SpringAIReActAgent reactAgent = createReActAgent(sessionId);
 
-        // 8. 创建死循环执行任务，根据流的不同状态执行不同的操作（对应Python的 while True 循环）
         while (true) {
             // 9. 如果流的状态为空闲，则只需要将状态修改为规划中
             if (flowStatus == FlowStatus.IDLE) {
@@ -279,7 +272,6 @@ public class SpringAIPlannerReActFlow {
             }
         }
 
-        // 28. 任务已经结束则返回结束事件（对应Python的 yield DoneEvent()）
         emitter.accept(DoneEvent.builder().build());
         logger.info("Planner&ReAct流处理任务消息已完毕");
     }

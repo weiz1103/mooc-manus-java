@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
  * <p>属于新增后端能力，不影响现有前端 SSE 契约。</p>
  */
 @RestController
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 17:22:32
+ */
 public class TaskEvaluationController {
 
     private final TaskEvaluationService taskEvaluationService;

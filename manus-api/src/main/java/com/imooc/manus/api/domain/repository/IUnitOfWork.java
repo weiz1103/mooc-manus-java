@@ -1,7 +1,6 @@
 package com.imooc.manus.api.domain.repository;
 
 /**
- * UoW模式协议接口，对应Python中的 IUnitOfWork 抽象基类。
  * <p>
  * 在Java中使用AutoCloseable实现事务的自动关闭，等同于Python的 async with uow。
  * 使用try-with-resources语法替代Python上下文管理器。
@@ -15,8 +14,8 @@ package com.imooc.manus.api.domain.repository;
  *   } // 自动rollback（如果未commit）
  * }</pre>
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 17:55:47
  */
 public interface IUnitOfWork extends AutoCloseable {
 

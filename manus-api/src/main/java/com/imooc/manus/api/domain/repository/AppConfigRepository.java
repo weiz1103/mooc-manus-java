@@ -6,9 +6,8 @@ import java.util.Optional;
 
 /**
  * 应用配置仓库。
- * 对应Python中的 AppConfigRepository Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 19:24:00
  */
 public interface AppConfigRepository {
 

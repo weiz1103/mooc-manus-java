@@ -15,7 +15,6 @@ import java.util.function.Consumer;
 
 /**
  * 规划 Agent（Spring AI 实现）。
- * 对应Python中的 PlannerAgent 类。
  *
  * <p>
  * 功能：将用户的任务/需求拆解成多个子步骤，根据已完成的子任务更新规划。
@@ -23,12 +22,11 @@ import java.util.function.Consumer;
  * - format = "json_object"：输出 JSON 格式规划
  * - tool_choice = "none"：不调用工具，只输出 JSON 内容
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 08:17:54
  */
 public class SpringAIPlannerAgent extends BaseSpringAIAgent {
 
-    /** Agent 名称，对应Python的 PlannerAgent.name */
     private static final String NAME = "planner";
 
     // ======================== Prompt 常量（从 manus-api 迁移）========================
@@ -150,7 +148,6 @@ JSON输出示例：
 
     /**
      * 构造规划 Agent。
-     * 对应Python的 PlannerAgent.__init__()
      *
      * @param sessionId     会话id
      * @param memoryStore   记忆持久化存储
@@ -175,13 +172,11 @@ JSON输出示例：
 
     @Override
     protected String getSystemPrompt() {
-        // 系统 prompt = 通用系统 prompt + 规划者特定 prompt（对应Python的 SYSTEM_PROMPT + PLANNER_SYSTEM_PROMPT）
         return SystemPrompts.SYSTEM_PROMPT + PLANNER_SYSTEM_PROMPT;
     }
 
     /**
      * 根据用户传递的消息创建规划/计划，并通过 emitter 发送对应事件。
-     * 对应Python的 PlannerAgent.create_plan()。
      *
      * <p>
      * 流程：
@@ -216,7 +211,6 @@ JSON输出示例：
             return null;
         }
 
-        // 4. 发送 PlanEvent(CREATED) 事件（对应Python的 yield PlanEvent(plan=plan, status=CREATED)）
         PlanEvent planEvent = PlanEvent.builder()
                 .plan(toPlanData(plan))
                 .status(PlanEvent.PlanEventStatus.CREATED)
@@ -227,7 +221,6 @@ JSON输出示例：
 
     /**
      * 根据传递的原有规划+子步骤更新规划事件。
-     * 对应Python的 PlannerAgent.update_plan()。
      *
      * <p>
      * 流程：
@@ -284,7 +277,6 @@ JSON输出示例：
                 plan.setSteps(updatedSteps);
             }
 
-            // 7. 发送规划更新事件（对应Python的 yield PlanEvent(plan=plan, status=UPDATED)）
             emitter.accept(PlanEvent.builder()
                     .plan(toPlanData(plan))
                     .status(PlanEvent.PlanEventStatus.UPDATED)

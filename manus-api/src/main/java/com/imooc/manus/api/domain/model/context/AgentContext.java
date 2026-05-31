@@ -17,6 +17,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @param traceId      全链路追踪 ID（用于日志排查）
  * @param chatMemory   Spring AI 标准会话记忆体（用于存储历史对话）
  * @param sharedMemory Agent 之间共享的动态变量字典（如中间执行结果）
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 23:22:02
  */
 public record AgentContext(
         String sessionId,

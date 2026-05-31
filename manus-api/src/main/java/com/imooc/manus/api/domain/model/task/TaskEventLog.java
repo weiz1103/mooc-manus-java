@@ -13,6 +13,11 @@ import java.util.Map;
  * 与 {@link TaskExecution} 的聚合统计信息分离。</p>
  */
 @Data
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 18:31:25
+ */
 public class TaskEventLog {
 
     private String id;

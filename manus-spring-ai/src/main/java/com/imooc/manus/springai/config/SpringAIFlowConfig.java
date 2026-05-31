@@ -2,7 +2,6 @@ package com.imooc.manus.springai.config;
 
 /**
  * Spring AI 多智能体流程配置参数。
- * 对应Python中的 AgentConfig 和相关配置项。
  *
  * <p>
  * 使用 Java Record 保证不可变性和强类型，避免 Map&lt;String, Object&gt;。
@@ -12,8 +11,8 @@ package com.imooc.manus.springai.config;
  * @param maxRetries    单次 LLM/工具调用最大重试次数
  * @param maxIterations 单个 Agent 调用的最大工具调用迭代次数
  * @param retryIntervalMs 重试间隔（毫秒）
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 15:00:43
  */
 public record SpringAIFlowConfig(
         String modelName,

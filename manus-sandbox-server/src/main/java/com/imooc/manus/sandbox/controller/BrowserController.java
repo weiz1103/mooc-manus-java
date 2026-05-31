@@ -8,12 +8,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 浏览器控制器，对应 Python sandbox_routes 中的 browser 相关端点。
  */
 @RestController
 @RequestMapping("/api/browser")
 @RequiredArgsConstructor
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 22:06:59
+ */
 public class BrowserController {
 
     private final BrowserService browserService;

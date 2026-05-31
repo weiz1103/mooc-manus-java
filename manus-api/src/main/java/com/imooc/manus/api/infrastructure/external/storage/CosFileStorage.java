@@ -16,9 +16,8 @@ import java.util.UUID;
 
 /**
  * 基于腾讯云COS的文件存储实现。
- * 对应Python中的 CosFileStorage 类。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 13:32:02
  */
 public class CosFileStorage implements FileStorage {
 

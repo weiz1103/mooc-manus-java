@@ -27,6 +27,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Agent 流程。这样 Controller 线程只负责提交与订阅输出，不再直接承载完整执行。</p>
  */
 @Component
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 16:52:31
+ */
 public class AgentTaskWorker {
 
     private static final Logger log = LoggerFactory.getLogger(AgentTaskWorker.class);

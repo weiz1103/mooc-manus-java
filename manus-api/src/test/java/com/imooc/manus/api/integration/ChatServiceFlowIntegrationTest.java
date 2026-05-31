@@ -32,6 +32,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 03:01:18
+ */
 class ChatServiceFlowIntegrationTest {
 
     private static final ObjectMapper JSON = new ObjectMapper().findAndRegisterModules();

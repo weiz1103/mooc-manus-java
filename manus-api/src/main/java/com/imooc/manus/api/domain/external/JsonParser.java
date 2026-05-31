@@ -2,9 +2,8 @@ package com.imooc.manus.api.domain.external;
 
 /**
  * JSON解析器，用于解析json字符串并修复。
- * 对应Python中的 JSONParser Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 13:19:38
  */
 public interface JsonParser {
 

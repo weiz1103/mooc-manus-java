@@ -41,6 +41,11 @@ import java.util.List;
  * 和事件副作用（由 {@link AgentEventBus} 负责）。</p>
  */
 @Service
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 07:47:17
+ */
 public class ChatService {
 
     private static final Logger log = LoggerFactory.getLogger(ChatService.class);

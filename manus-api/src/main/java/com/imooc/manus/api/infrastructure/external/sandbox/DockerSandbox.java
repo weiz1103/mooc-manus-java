@@ -23,13 +23,11 @@ import java.util.regex.Pattern;
 
 /**
  * 基于Docker的沙箱服务。
- * 对应Python中的 DockerSandbox 类。
  * <p>
- * 通过HTTP调用沙箱服务的API（沙箱服务即Python sandbox FastAPI应用/
  * Java manus-sandbox-server），完成文件、Shell、浏览器等操作。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 02:58:48
  */
 public class DockerSandbox implements Sandbox {
 
@@ -238,7 +236,6 @@ public class DockerSandbox implements Sandbox {
 
     /**
      * 确保沙箱存在，循环等待所有服务启动完成。
-     * 对应Python的 DockerSandbox.ensure_sandbox()
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -497,7 +494,6 @@ public class DockerSandbox implements Sandbox {
 
     /**
      * 将沙箱响应转换为ToolResult
-     * 对应Python的 ToolResult.from_sandbox(code, msg, data)
      */
     @SuppressWarnings("unchecked")
     private ToolResult<Object> fromSandboxResponse(Map<String, Object> response) {

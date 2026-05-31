@@ -15,6 +15,11 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 06:14:49
+ */
 public class SessionQueryService {
 
     private final SessionRepository sessionRepository;

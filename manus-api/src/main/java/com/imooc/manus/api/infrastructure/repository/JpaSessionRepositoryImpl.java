@@ -22,9 +22,8 @@ import java.util.stream.Collectors;
 
 /**
  * 基于JPA的会话仓库实现。
- * 对应Python中的 SQLAlchemySessionRepository 类。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 01:18:08
  */
 public class JpaSessionRepositoryImpl implements SessionRepository {
 

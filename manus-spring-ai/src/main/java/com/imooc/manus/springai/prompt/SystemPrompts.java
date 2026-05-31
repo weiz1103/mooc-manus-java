@@ -1,7 +1,8 @@
 package com.imooc.manus.springai.prompt;
 
 /**
- * 所有 Agent 共用的系统预设 Prompt，与 Python 版 system.py SYSTEM_PROMPT 保持一致。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 20:41:37
  */
 public final class SystemPrompts {
 

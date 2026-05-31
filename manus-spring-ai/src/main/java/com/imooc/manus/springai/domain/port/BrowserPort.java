@@ -4,7 +4,8 @@ import com.imooc.manus.common.model.ToolResult;
 
 /**
  * 浏览器服务端口（Port / Anti-Corruption Layer）。
- * 对应 Python Browser Protocol。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 20:16:17
  */
 public interface BrowserPort {
 

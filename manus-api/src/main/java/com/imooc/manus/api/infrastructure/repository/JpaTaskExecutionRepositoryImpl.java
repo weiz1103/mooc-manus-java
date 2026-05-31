@@ -14,6 +14,8 @@ import java.util.Optional;
 
 /**
  * JPA 版任务执行仓储。
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 05:22:56
  */
 public class JpaTaskExecutionRepositoryImpl implements TaskExecutionRepository {
 

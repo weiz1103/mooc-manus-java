@@ -5,8 +5,8 @@ package com.imooc.manus.api.domain.external;
  * <p>
  * 任务现在仅作为输入/输出流的数据载体。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 07:40:07
  */
 public interface Task {
 

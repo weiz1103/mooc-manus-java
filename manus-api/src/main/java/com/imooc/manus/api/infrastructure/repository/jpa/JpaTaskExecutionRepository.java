@@ -8,6 +8,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 17:16:34
+ */
 public interface JpaTaskExecutionRepository extends JpaRepository<TaskExecutionModel, String> {
 
     Optional<TaskExecutionModel> findTopBySessionIdOrderBySubmittedAtDesc(String sessionId);

@@ -25,6 +25,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 基于 Redis Stream 的任务分发队列。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 14:48:22
  */
 public class RedisTaskDispatchQueue implements TaskDispatchQueue {
 

@@ -1,7 +1,8 @@
 package com.imooc.manus.springai.prompt;
 
 /**
- * Planner Agent 提示词模板，与 Python 版 planner.py 保持一致。
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 08:36:11
  */
 public final class PlannerPrompts {
 

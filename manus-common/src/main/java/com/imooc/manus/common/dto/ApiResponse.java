@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 统一 API 响应包装器，对应 Python Response 类。
  * 结构: { code: 200, msg: "success", data: T }
  *
  * @param <T> 响应数据的类型
@@ -17,6 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 17:19:11
+ */
 public class ApiResponse<T> {
 
     private int code;

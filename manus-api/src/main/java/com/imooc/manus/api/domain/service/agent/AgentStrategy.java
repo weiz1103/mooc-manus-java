@@ -13,6 +13,8 @@ import java.util.List;
  *
  * <p>如需切换 AI 框架或执行模式（如直接回答、固定工具流），
  * 只需新增此接口的实现并通过配置切换，不改动任何上层业务代码。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 09:28:41
  */
 public interface AgentStrategy {
 

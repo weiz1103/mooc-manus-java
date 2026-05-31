@@ -39,13 +39,17 @@ import java.util.function.Supplier;
 /**
  * Spring Boot应用核心配置类。
  * <p>
- * 对应Python中的 dependency_injection.py，负责将所有依赖项wire在一起。
  * 遵循构造器注入原则，不使用@Autowired字段注入。
  * </p>
  *
- * @author thezehui@gmail.com
+
  */
 @Configuration
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 05:25:20
+ */
 public class ManusConfig {
 
     /**
@@ -153,7 +157,6 @@ public class ManusConfig {
     }
 
     /**
-     * UoW工厂（对应Python的 uow_factory）
      */
     @Bean
     public Supplier<IUnitOfWork> uowFactory(

@@ -18,19 +18,17 @@ import java.util.function.Consumer;
 
 /**
  * 基于 ReAct 架构的执行 Agent（Spring AI 实现）。
- * 对应Python中的 ReActAgent 类。
  *
  * <p>
  * 功能：
  * - execute_step：根据传递的消息+规划+子步骤，执行相应的子步骤
  * - summarize：汇总历史的消息并生成最终回答/附件
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-24 22:30:38
  */
 public class SpringAIReActAgent extends BaseSpringAIAgent {
 
-    /** Agent 名称，对应Python的 ReActAgent.name */
     private static final String NAME = "react";
 
     // ======================== Prompt 常量 ========================
@@ -113,7 +111,6 @@ interface SummarizeResult {{
 
     /**
      * 构造执行 Agent。
-     * 对应Python的 ReActAgent.__init__()
      *
      * @param sessionId     会话id
      * @param memoryStore   记忆持久化存储
@@ -138,13 +135,11 @@ interface SummarizeResult {{
 
     @Override
     protected String getSystemPrompt() {
-        // 对应Python的 SYSTEM_PROMPT + REACT_SYSTEM_PROMPT
         return SystemPrompts.SYSTEM_PROMPT + REACT_SYSTEM_PROMPT;
     }
 
     /**
      * 根据传递的消息+规划+子步骤，执行相应的子步骤。
-     * 对应Python的 ReActAgent.execute_step()。
      *
      * <p>
      * 流程：
@@ -171,7 +166,6 @@ interface SummarizeResult {{
                 .replace("{language}", plan.getLanguage() != null ? plan.getLanguage() : "中文")
                 .replace("{step}", step.getDescription() != null ? step.getDescription() : "");
 
-        // 2. 更新步骤执行状态为 RUNNING 并返回 Step 事件（对应Python的 step.status = RUNNING; yield StepEvent(STARTED)）
         step.setStatus(ExecutionStatus.RUNNING);
         emitter.accept(StepEvent.builder()
                 .step(toStepData(step))
@@ -201,7 +195,6 @@ interface SummarizeResult {{
             step.setResult(resultStep.getResult());
             step.setAttachments(resultStep.getAttachments());
 
-            // 7. 发送步骤完成事件（对应Python的 yield StepEvent(COMPLETED)）
             emitter.accept(StepEvent.builder()
                     .step(toStepData(step))
                     .status(StepEvent.StepEventStatus.COMPLETED)
@@ -228,7 +221,6 @@ interface SummarizeResult {{
 
     /**
      * 调用 Agent 汇总历史的消息并生成最终回答/附件。
-     * 对应Python的 ReActAgent.summarize()。
      *
      * <p>
      * 流程：
@@ -265,7 +257,6 @@ interface SummarizeResult {{
                 }
             }
 
-            // 4. 返回消息事件（对应Python的 yield MessageEvent(role="assistant", message=..., attachments=[...])）
             emitter.accept(MessageEvent.builder()
                     .role("assistant")
                     .message(messageText)

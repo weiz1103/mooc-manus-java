@@ -8,8 +8,9 @@ import org.springframework.ai.tool.annotation.ToolParam;
 /**
  * 搜索工具服务，提供全网搜索能力。
  * <p>
- * 对应 Python 版 SearchTool。
  * </p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 16:56:49
  */
 public class SearchToolService {
 

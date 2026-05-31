@@ -6,10 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 
 /**
- * 执行状态枚举，对应Python中的 ExecutionStatus。
  * 用于描述 Plan 和 Step 的执行状态。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 19:51:24
  */
 public enum ExecutionStatus {
     /** 待执行 */

@@ -16,23 +16,25 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 浏览器自动化服务，对应 Python PlaywrightBrowser。
  *
  * <p>关键设计：
  * <ul>
  *   <li>每个 sessionId 独立拥有一个 Page（避免并发干扰）</li>
  *   <li>Playwright 实例在首次使用时懒加载（节省内存）</li>
- *   <li>使用 FlexmarkHtmlConverter 将页面 HTML 转为 Markdown（对应 Python markdownify）</li>
  * </ul>
  */
 @Service
 @Slf4j
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 14:51:05
+ */
 public class BrowserService {
 
     private Playwright playwright;
     private Browser browser;
 
-    /** 每个会话对应独立的 Page，对应 Python 中的 browser.new_page() */
     private final Map<String, Page> pageMap = new ConcurrentHashMap<>();
 
     private final FlexmarkHtmlConverter htmlConverter = FlexmarkHtmlConverter.builder().build();
@@ -73,7 +75,6 @@ public class BrowserService {
     // ==================== Public API ====================
 
     /**
-     * 导航到指定 URL，对应 Python PlaywrightBrowser.navigate()
      */
     public BrowserDto.NavigateResult navigate(String sessionId, String url) {
         log.info("[{}] Navigating to {}", sessionId, url);
@@ -94,12 +95,10 @@ public class BrowserService {
     }
 
     /**
-     * 获取当前页面内容和可交互元素，对应 Python PlaywrightBrowser 中的 view 方法
      */
     public BrowserDto.ViewPageResult viewPage(String sessionId) {
         Page page = getOrCreatePage(sessionId);
 
-        // 注入元素标记脚本（与 Python 版完全相同的 JS 逻辑）
         page.evaluate(BrowserJsConstants.GET_INTERACTIVE_ELEMENTS_FUNC);
 
         // 获取可见文本内容并转换为 Markdown
@@ -124,7 +123,6 @@ public class BrowserService {
     }
 
     /**
-     * 点击元素，对应 Python PlaywrightBrowser.click()
      */
     public BrowserDto.ActionResult click(String sessionId, int index) {
         log.info("[{}] Clicking element index={}", sessionId, index);
@@ -139,7 +137,6 @@ public class BrowserService {
     }
 
     /**
-     * 向元素输入文字，对应 Python PlaywrightBrowser.type()
      */
     public BrowserDto.ActionResult type(String sessionId, int index, String text, boolean pressEnter) {
         log.info("[{}] Typing to element index={}", sessionId, index);

@@ -11,6 +11,8 @@ import java.util.List;
  * 但使用 manus 自身的 sessionId + agentName 双维度定位记忆，
  * 底层持久化由 manus-api 层注入实现。
  * </p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 05:08:03
  */
 public interface MemoryPort {
 

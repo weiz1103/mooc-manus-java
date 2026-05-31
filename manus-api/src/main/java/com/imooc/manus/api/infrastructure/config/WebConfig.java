@@ -13,9 +13,13 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Web 全局配置：CORS + Jackson 序列化。
- * CORS 允许前端跨域访问，对应 Python FastAPI 的 CORSMiddleware 配置。
  */
 @Configuration
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-24 21:14:01
+ */
 public class WebConfig implements WebMvcConfigurer {
 
     @Override

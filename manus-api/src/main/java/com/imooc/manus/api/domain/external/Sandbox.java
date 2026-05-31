@@ -8,11 +8,10 @@ import java.util.Optional;
 /**
  * 沙箱服务扩展协议，涵盖：文件工具协议、Shell工具协议以及沙箱本身的扩展。
  * <p>
- * 对应Python中的 Sandbox Protocol。
  * 调用沙箱服务的HTTP API接口。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-25 22:35:28
  */
 public interface Sandbox {
 

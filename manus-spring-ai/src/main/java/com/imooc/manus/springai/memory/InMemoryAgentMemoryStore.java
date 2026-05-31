@@ -7,13 +7,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 基于内存的 AgentMemoryStore 默认实现。
- * 对应Python中将记忆保存在内存中的行为（用于测试/开发）。
  *
  * <p>
  * 生产环境建议使用 JpaAgentMemoryStore（由 manus-api 模块提供）进行数据库持久化。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-31 18:59:38
  */
 public class InMemoryAgentMemoryStore implements AgentMemoryStore {
 

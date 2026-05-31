@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 17:32:44
+ */
 public class ShellDto {
 
     @Data @Builder @NoArgsConstructor @AllArgsConstructor

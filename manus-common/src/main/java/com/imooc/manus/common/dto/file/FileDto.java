@@ -6,6 +6,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 20:33:56
+ */
 public class FileDto {
 
     @Data @Builder @NoArgsConstructor @AllArgsConstructor

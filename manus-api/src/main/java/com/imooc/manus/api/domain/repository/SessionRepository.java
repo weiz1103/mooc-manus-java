@@ -12,9 +12,8 @@ import java.util.Optional;
 
 /**
  * 会话仓库协议定义。
- * 对应Python中的 SessionRepository Protocol。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 07:18:30
  */
 public interface SessionRepository {
 

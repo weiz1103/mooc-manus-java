@@ -10,6 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * </p>
  *
  * <p><b>扩展点：</b> 继承此类可添加 TTL 过期、分布式锁等能力。</p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 11:18:36
  */
 public class InMemorySessionStateLoader implements SessionStateLoader {
 

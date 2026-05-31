@@ -16,12 +16,11 @@ import java.util.Optional;
 
 /**
  * 基于YAML文件的应用配置仓库。
- * 对应Python中的 FileAppConfigRepository 类。
  * <p>
  * 读写 config.yaml 文件。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 17:50:07
  */
 public class FileAppConfigRepository implements AppConfigRepository {
 

@@ -1,5 +1,10 @@
 package com.imooc.manus.sandbox.constant;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-29 23:41:16
+ */
 public class BrowserJsConstants {
     public static final String GET_VISIBLE_CONTENT_FUNC = """
         () => {

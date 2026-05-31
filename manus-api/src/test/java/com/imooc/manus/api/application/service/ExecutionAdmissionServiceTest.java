@@ -10,6 +10,11 @@ import java.time.ZoneOffset;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 18:31:25
+ */
 class ExecutionAdmissionServiceTest {
 
     @Test
@@ -56,5 +61,4 @@ class ExecutionAdmissionServiceTest {
         assertThat(service.rejectReason("session-1")).contains("session_active_task_limit_exceeded");
     }
 }
-
 

@@ -13,12 +13,11 @@ import java.util.Map;
 
 /**
  * 基于沙箱HTTP API的浏览器实现。
- * 对应Python中的 PlaywrightBrowser 类。
  * <p>
  * 通过调用沙箱服务（manus-sandbox-server）的浏览器API实现各种操作。
  * </p>
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 22:53:25
  */
 public class SandboxBrowser implements Browser {
 

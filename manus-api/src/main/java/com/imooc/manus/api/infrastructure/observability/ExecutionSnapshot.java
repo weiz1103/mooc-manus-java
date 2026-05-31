@@ -11,6 +11,11 @@ import java.util.List;
  * 一次 Agent 任务执行的观测快照。
  */
 @Builder(toBuilder = true)
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-28 18:11:13
+ */
 public record ExecutionSnapshot(
         String sessionId,
         String taskId,

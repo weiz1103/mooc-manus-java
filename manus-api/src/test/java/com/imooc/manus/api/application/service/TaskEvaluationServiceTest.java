@@ -15,6 +15,11 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 类说明。
+ * @author zhuang03@qq.com
+ * @date 2026-05-26 09:50:52
+ */
 class TaskEvaluationServiceTest {
 
     private TaskExecutionService taskExecutionService;
@@ -94,5 +99,4 @@ class TaskEvaluationServiceTest {
         return execution;
     }
 }
-
 

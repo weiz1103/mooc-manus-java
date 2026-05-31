@@ -13,9 +13,8 @@ import java.util.function.Supplier;
 
 /**
  * 基于 JPA（数据库）的 SessionStateLoader 实现。
- * 对应Python中通过 IUnitOfWork.session 加载和更新会话状态的操作。
- *
- * @author thezehui@gmail.com
+ * @author zhuang03@qq.com
+ * @date 2026-05-30 00:24:59
  */
 public class JpaSessionStateLoader implements SessionStateLoader {
 

@@ -20,7 +20,7 @@ public class SandboxProperties {
     /** 连接超时（秒。*/
     private int connectTimeoutSeconds = 10;
 
-    /** 读取超时（秒。/
+    /** 读取超时（秒。*/
     private int readTimeoutSeconds = 300;
 }
 

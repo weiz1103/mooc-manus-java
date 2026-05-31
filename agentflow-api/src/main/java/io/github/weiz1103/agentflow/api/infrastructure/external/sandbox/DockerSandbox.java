@@ -497,7 +497,7 @@ public class DockerSandbox implements Sandbox {
      */
     @SuppressWarnings("unchecked")
     private ToolResult<Object> fromSandboxResponse(Map<String, Object> response) {
-        if (response == null) return ToolResult.fail("沙箱返回空响。);
+        if (response == null) return ToolResult.fail("沙箱返回空响应");
         int code = ((Number) response.getOrDefault("code", 500)).intValue();
         String msg = String.valueOf(response.getOrDefault("msg", response.getOrDefault("message", "")));
         Object data = response.get("data");

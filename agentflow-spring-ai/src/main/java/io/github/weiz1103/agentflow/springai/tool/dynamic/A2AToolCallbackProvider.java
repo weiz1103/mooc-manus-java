@@ -47,7 +47,7 @@ public class A2AToolCallbackProvider {
                                 return "{\"success\":false}";
                             }
                         })
-                .description("获取可远程调用的 Agent 卡片信息，包。Agent id、名称、描述、技能、请求端点等。)
+                .description("获取可远程调用的 Agent 卡片信息，包。Agent id、名称、描述、技能、请求端点等")
                 .inputType(EmptyInput.class)
                 .build();
 
@@ -61,7 +61,7 @@ public class A2AToolCallbackProvider {
                                 return "{\"success\":false,\"message\":\"" + e.getMessage() + "\"}";
                             }
                         })
-                .description("根据传递的 id + query（分配给远程 Agent 完成的任。query）调用远。Agent。)
+                .description("根据传递的 id + query（分配给远程 Agent 完成的任务query）调用远程Agent")
                 .inputType(CallRemoteAgentInput.class)
                 .build();
 

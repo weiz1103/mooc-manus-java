@@ -94,7 +94,7 @@ public class SessionController {
     @PostMapping("/{sessionId}/clear-unread-message-count")
     public ResponseEntity<ApiResponse<Void>> clearUnread(@PathVariable String sessionId) {
         sessionCommandService.clearUnreadCount(sessionId);
-        return ResponseEntity.ok(ApiResponse.success("清除未读消息数成。));
+        return ResponseEntity.ok(ApiResponse.success("清除未读消息数"));
     }
 
     @GetMapping("/{sessionId}/files")

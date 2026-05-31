@@ -21,11 +21,11 @@ public class SearchToolService {
         this.searchEngine = searchEngine;
     }
 
-    @Tool(name = "search_web", description = "全网搜索引擎工具。当需要获取实时信息（如突发新闻、天气）。 +
-            "补充内部知识库未覆盖的内容或进行事实核查时使用。该工具会返回相关的网页摘要和链接。)
+    @Tool(name = "search_web", description = "全网搜索引擎工具。当需要获取实时信息（如突发新闻、天气）" +
+            "补充内部知识库未覆盖的内容或进行事实核查时使用。该工具会返回相关的网页摘要和链接")
     public String searchWeb(
             @ToolParam(description = "搜索查询内容") String query,
-            @ToolParam(description = "日期范围限制（可选，。past_week。, required = false) String dateRange
+            @ToolParam(description = "日期范围限制（可选，ast_week", required = false) String dateRange
     ) {
         return serialize(searchEngine.search(query, dateRange));
     }

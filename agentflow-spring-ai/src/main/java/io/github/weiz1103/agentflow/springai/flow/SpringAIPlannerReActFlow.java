@@ -134,11 +134,11 @@ public class SpringAIPlannerReActFlow {
         FlowStatus flowStatus;
         if ("RUNNING".equals(sessionStatus)) {
             // 会话处于运行中状态并传递了新消。。需要重新规。
-            logger.debug("会话[{}]处于运行状态并传递了新消。, sessionId);
+            logger.debug("会话[{}]处于运行状态并传递了新消息", sessionId);
             flowStatus = FlowStatus.PLANNING;
         } else if ("WAITING".equals(sessionStatus)) {
             // 会话处于等待人类输入，这时候人类输入了 。直接执行
-            logger.debug("会话[{}]处于等待状态并传递了新消。, sessionId);
+            logger.debug("会话[{}]处于等待状态并传递了新消息", sessionId);
             flowStatus = FlowStatus.EXECUTING;
         } else {
             flowStatus = FlowStatus.IDLE;
@@ -165,12 +165,12 @@ public class SpringAIPlannerReActFlow {
                 flowStatus = FlowStatus.PLANNING;
             } else if (flowStatus == FlowStatus.PLANNING) {
                 // 10. 流状态为规划中，则调用规。Agent
-                logger.info("Planner&ReAct流开始创建规。Plan");
+                logger.info("Planner&ReAct流开始创建规规划Plan");
                 plan = plannerAgent.createPlan(msg, event -> {
                     // 11. 判断规划 Agent 是否返回规划事件
                     if (event instanceof PlanEvent planEvent && planEvent.getStatus() == PlanEvent.PlanEventStatus.CREATED) {
                         // 12. 创建规划成功时需要更新规。
-                        logger.info("Planner&ReAct流成功创建规。 共有: {} 。,
+                        logger.info("Planner&ReAct流成功创建规划 共有: {} 规划",
                                 planEvent.getPlan() != null && planEvent.getPlan().getSteps() != null
                                         ? planEvent.getPlan().getSteps().size() : 0);
 
@@ -232,7 +232,7 @@ public class SpringAIPlannerReActFlow {
                 }
 
                 // 21. 压缩执行Agent记忆，避免上下文腐化+消耗大量Token
-                logger.info("压缩{} Agent记忆/上下。, reactAgent.getName());
+                logger.info("压缩{} Agent记忆/上下文", reactAgent.getName());
                 reactAgent.compactMemory();
 
                 // 22. 将状态更新为 updating
@@ -240,7 +240,7 @@ public class SpringAIPlannerReActFlow {
                 if (plan != null) savePlan(sessionId, plan);
             } else if (flowStatus == FlowStatus.UPDATING) {
                 // 23. 流状态为更新表示需要更新规。
-                logger.info("Planner&ReAct流开始更新规。);
+                logger.info("Planner&ReAct流开始更新规划");
                 if (plan != null && currentStep != null) {
                     plannerAgent.updatePlan(plan, currentStep, emitter);
                 }

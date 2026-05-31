@@ -48,7 +48,7 @@ public class SessionCommandService {
     @Transactional
     public Session create() {
         Session session = new Session();
-        session.setTitle("新对。);
+        session.setTitle("新对话");
         sessionRepository.save(session);
         log.info("新会话已创建: sessionId={}", session.getId());
         return session;

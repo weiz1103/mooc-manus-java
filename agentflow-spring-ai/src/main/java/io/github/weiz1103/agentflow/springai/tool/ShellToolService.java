@@ -23,7 +23,7 @@ public class ShellToolService {
         this.sandbox = sandbox;
     }
 
-    @Tool(name = "shell_execute", description = "在指。Shell 会话中执行命令。可用于运行代码、安装依赖包或文件管理。)
+    @Tool(name = "shell_execute", description = "在指定Shell 会话中执行命令。可用于运行代码、安装依赖包或文件管理")
     public String shellExecute(
             @ToolParam(description = "Shell 会话 id") String sessionId,
             @ToolParam(description = "命令执行目录（绝对路径）", required = false) String execDir,
@@ -32,14 +32,14 @@ public class ShellToolService {
         return serialize(sandbox.execCommand(sessionId, execDir, command));
     }
 
-    @Tool(name = "shell_read_output", description = "查看指定 Shell 会话的输出内容。用于检查命令执行结果或监控输出。)
+    @Tool(name = "shell_read_output", description = "查看指定 Shell 会话的输出内容。用于检查命令执行结果或监控输出")
     public String shellReadOutput(
             @ToolParam(description = "Shell 会话 id") String sessionId
     ) {
         return serialize(sandbox.readShellOutput(sessionId, false));
     }
 
-    @Tool(name = "shell_wait_process", description = "等待指定 Shell 会话中正在运行的进程返回。在运行耗时较长的命令后使用。)
+    @Tool(name = "shell_wait_process", description = "等待指定 Shell 会话中正在运行的进程返回。在运行耗时较长的命令后使用")
     public String shellWaitProcess(
             @ToolParam(description = "Shell 会话 id") String sessionId,
             @ToolParam(description = "等待超时秒数（可选）", required = false) Integer seconds
@@ -47,16 +47,16 @@ public class ShellToolService {
         return serialize(sandbox.waitProcess(sessionId, seconds));
     }
 
-    @Tool(name = "shell_write_input", description = "向指。Shell 会话中正在运行的进程写入输入。用于响应交互式命令提示符。)
+    @Tool(name = "shell_write_input", description = "向指。Shell 会话中正在运行的进程写入输入。用于响应交互式命令提示符")
     public String shellWriteInput(
             @ToolParam(description = "Shell 会话 id") String sessionId,
             @ToolParam(description = "要写入的文本内容") String inputText,
-            @ToolParam(description = "是否在输入后。Enter 。) Boolean pressEnter
+            @ToolParam(description = "是否在输入后按Enter ") Boolean pressEnter
     ) {
         return serialize(sandbox.writeShellInput(sessionId, inputText, Boolean.TRUE.equals(pressEnter)));
     }
 
-    @Tool(name = "shell_kill_process", description = "在指。Shell 会话中终止正在运行的进程。用于停止长时间运行的进程或处理卡住的命令。)
+    @Tool(name = "shell_kill_process", description = "在指定Shell 会话中终止正在运行的进程。用于停止长时间运行的进程或处理卡住的命令")
     public String shellKillProcess(
             @ToolParam(description = "Shell 会话 id") String sessionId
     ) {

@@ -25,7 +25,7 @@ public class FileToolService {
         this.sandbox = sandbox;
     }
 
-    @Tool(name = "read_file", description = "读取文件内容。用于检查文件内容、分析日志或读取配置文件。)
+    @Tool(name = "read_file", description = "读取文件内容。用于检查文件内容、分析日志或读取配置文件")
     public String readFile(
             @ToolParam(description = "文件路径") String filepath,
             @ToolParam(description = "起始行号（可选）", required = false) Integer startLine,
@@ -39,7 +39,7 @@ public class FileToolService {
                 maxLength != null ? maxLength : 10000));
     }
 
-    @Tool(name = "write_file", description = "对文件进行覆盖或追加写入。用于创建新文件、追加内容或修改现有文件。)
+    @Tool(name = "write_file", description = "对文件进行覆盖或追加写入。用于创建新文件、追加内容或修改现有文件")
     public String writeFile(
             @ToolParam(description = "文件路径") String filepath,
             @ToolParam(description = "写入内容") String content,
@@ -56,7 +56,7 @@ public class FileToolService {
                 Boolean.TRUE.equals(sudo)));
     }
 
-    @Tool(name = "replace_in_file", description = "在文件中替换指定的字符串。用于更新文件中的特定内容或修复代码中的错误。)
+    @Tool(name = "replace_in_file", description = "在文件中替换指定的字符串。用于更新文件中的特定内容或修复代码中的错误")
     public String replaceInFile(
             @ToolParam(description = "文件路径") String filepath,
             @ToolParam(description = "要替换的旧字符串") String oldStr,
@@ -66,16 +66,16 @@ public class FileToolService {
         return serialize(sandbox.replaceInFile(filepath, oldStr, newStr, Boolean.TRUE.equals(sudo)));
     }
 
-    @Tool(name = "search_in_file", description = "在文件内容中搜索匹配的文本。用于查找文件中的特定内容或模式。)
+    @Tool(name = "search_in_file", description = "在文件内容中搜索匹配的文本。用于查找文件中的特定内容或模式")
     public String searchInFile(
             @ToolParam(description = "文件路径") String filepath,
-            @ToolParam(description = "正则表达。) String regex,
+            @ToolParam(description = "正则表达") String regex,
             @ToolParam(description = "是否使用 sudo 权限", required = false) Boolean sudo
     ) {
         return serialize(sandbox.searchInFile(filepath, regex, Boolean.TRUE.equals(sudo)));
     }
 
-    @Tool(name = "find_files", description = "在指定目录中根据名称模式查找文件。用于定位具有特定命名模式的文件。)
+    @Tool(name = "find_files", description = "在指定目录中根据名称模式查找文件。用于定位具有特定命名模式的文件")
     public String findFiles(
             @ToolParam(description = "要搜索的目录路径") String dirPath,
             @ToolParam(description = "Glob 模式，例。*.py") String globPattern

@@ -277,8 +277,8 @@ public class ChatService {
 
     private String resolveAdmissionMessage(String reason) {
         return switch (reason) {
-            case "session_rate_limit_exceeded" -> "当前会话触发发送频率限制，请稍后再。;
-            case "session_active_task_limit_exceeded" -> "当前会话已有进行中的任务，请等待当前任务结束后再。;
+            case "session_rate_limit_exceeded" -> "当前会话触发发送频率限制，请稍后再试";
+            case "session_active_task_limit_exceeded" -> "当前会话已有进行中的任务，请等待当前任务结束后再试";
             case "session_daily_task_quota_exceeded" -> "当前会话今日任务配额已用尽，请明日再试或调整配额";
             default -> "当前请求未通过系统准入校验";
         };

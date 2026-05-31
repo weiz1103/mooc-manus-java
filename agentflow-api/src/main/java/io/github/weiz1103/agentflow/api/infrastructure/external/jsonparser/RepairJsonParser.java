@@ -74,7 +74,7 @@ public class RepairJsonParser implements JsonParser {
         try {
             return OBJECT_MAPPER.readValue(cleaned, Object.class);
         } catch (Exception e) {
-            logger.error("修复JSON解析器无法解。 {}, 使用默认。, text.substring(0, Math.min(100, text.length())));
+            logger.error("修复JSON解析器无法解析 {}, 使用默认。", text.substring(0, Math.min(100, text.length())));
             return defaultValue;
         }
     }

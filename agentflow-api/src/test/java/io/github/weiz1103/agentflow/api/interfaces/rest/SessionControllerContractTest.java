@@ -107,7 +107,7 @@ class SessionControllerContractTest {
         mockMvc.perform(post("/api/v1/sessions/test-session-123/clear-unread-message-count"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code").value(200))
-                .andExpect(jsonPath("$.msg").value("清除未读消息数成。));
+                .andExpect(jsonPath("$.msg").value("清除未读消息数成"));
 
         Mockito.verify(sessionCommandService).clearUnreadCount("test-session-123");
     }

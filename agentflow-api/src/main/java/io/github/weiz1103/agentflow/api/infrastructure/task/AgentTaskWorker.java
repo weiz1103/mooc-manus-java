@@ -67,7 +67,7 @@ public class AgentTaskWorker {
         }
         if (running.compareAndSet(false, true)) {
             workerThread = Thread.ofVirtual().name("agent-task-worker").start(this::loop);
-            log.info("后台 Agent Worker 已启。);
+            log.info("后台 Agent Worker 已启动");
         }
     }
 

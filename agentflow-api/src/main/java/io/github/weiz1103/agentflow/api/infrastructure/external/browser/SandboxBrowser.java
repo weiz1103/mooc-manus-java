@@ -145,7 +145,7 @@ public class SandboxBrowser implements Browser {
                     .body(body)
                     .retrieve()
                     .body(Map.class);
-            if (response == null) return ToolResult.fail("浏览器API返回空响。);
+            if (response == null) return ToolResult.fail("浏览器API返回空响应");
             int code = ((Number) response.getOrDefault("code", 500)).intValue();
             String msg = String.valueOf(response.getOrDefault("msg", response.getOrDefault("message", "")));
             Object data = response.get("data");
@@ -163,7 +163,7 @@ public class SandboxBrowser implements Browser {
                     .uri(uri)
                     .retrieve()
                     .body(Map.class);
-            if (response == null) return ToolResult.fail("浏览器API返回空响。);
+            if (response == null) return ToolResult.fail("浏览器API返回空响应");
             int code = ((Number) response.getOrDefault("code", 500)).intValue();
             String msg = String.valueOf(response.getOrDefault("msg", response.getOrDefault("message", "")));
             Object data = response.get("data");

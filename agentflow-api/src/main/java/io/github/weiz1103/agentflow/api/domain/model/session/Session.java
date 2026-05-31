@@ -1,0 +1,170 @@
+package io.github.weiz1103.agentflow.api.domain.model.session;
+
+import io.github.weiz1103.agentflow.common.event.BaseEvent;
+import io.github.weiz1103.agentflow.common.event.PlanEvent;
+import io.github.weiz1103.agentflow.api.domain.model.file.FileMeta;
+import io.github.weiz1103.agentflow.api.domain.model.memory.Memory;
+import io.github.weiz1103.agentflow.api.domain.model.plan.Plan;
+
+import java.time.LocalDateTime;
+import java.util.*;
+
+/**
+ * 会话领域模型。
+ * <p>
+ * 使用可变POJO，因为会话状态在执行过程中会被修改。
+ * </p>
+ * @author zhuang03@qq.com
+ * @date 2026-05-27 16:55:23
+ */
+public class Session {
+
+    /** 会话id */
+    private String id;
+
+    /** 沙箱id */
+    private String sandboxId;
+
+    /** 任务id */
+    private String taskId;
+
+    /** 标题 */
+    private String title;
+
+    /** 未读消息。*/
+    private int unreadMessageCount;
+
+    /** 最新消。*/
+    private String latestMessage;
+
+    /**
+     * 业务方法：开始执行任。
+     */
+    public void start() {
+        // 允许从任何状态（包含 COMPLETED 。WAITING）重新进。RUNNING 状。
+        // 这样可以支持同一会话内的多轮追问
+        this.status = SessionStatus.RUNNING;
+    }
+
+    /**
+     * 业务方法：等待用户输。
+     */
+    public void waitForInput() {
+        if (this.status == SessionStatus.RUNNING) {
+            this.status = SessionStatus.WAITING;
+        }
+    }
+
+    /**
+     * 业务方法：完成会。
+     */
+    public void complete() {
+        this.status = SessionStatus.COMPLETED;
+    }
+
+    /**
+     * 基础设施专用：从持久层还原状态（禁止在业务逻辑中调用）。
+     * 仅供 JPA Repository 反序列化时使用。
+     */
+    public void restore(SessionStatus status) {
+        this.status = status;
+    }
+
+    /** 最新消息时。*/
+    private LocalDateTime latestMessageAt;
+
+    /** 事件列表 */
+    private List<BaseEvent> events;
+
+    /** 文件列表 */
+    private List<FileMeta> files;
+
+    /** 记忆（按Agent名字存储。*/
+    private Map<String, Memory> memories;
+
+    /** 状。*/
+    private SessionStatus status;
+
+    /** 更新时间 */
+    private LocalDateTime updatedAt;
+
+    /** 创建时间 */
+    private LocalDateTime createdAt;
+
+    public Session() {
+        this.id = UUID.randomUUID().toString();
+        this.title = "";
+        this.unreadMessageCount = 0;
+        this.latestMessage = "";
+        this.events = new ArrayList<>();
+        this.files = new ArrayList<>();
+        this.memories = new HashMap<>();
+        this.status = SessionStatus.PENDING;
+        this.updatedAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
+    }
+
+    /**
+     * 获取会话中的最新规划。
+     * 倒序遍历会话中所有事件消息，找到第一个PlanEvent并提取规划后返回。
+     *
+     * @return 最新规划（Optional。
+     */
+    public java.util.Optional<io.github.weiz1103.agentflow.common.event.PlanEvent.PlanData> getLatestPlan() {
+        for (int i = events.size() - 1; i >= 0; i--) {
+            if (events.get(i) instanceof io.github.weiz1103.agentflow.common.event.PlanEvent planEvent) {
+                return java.util.Optional.ofNullable(planEvent.getPlan());
+            }
+        }
+        return Optional.empty();
+    }
+
+    // ======================== Getters & Setters ========================
+
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    public String getSandboxId() { return sandboxId; }
+    public void setSandboxId(String sandboxId) { this.sandboxId = sandboxId; }
+
+    public String getTaskId() { return taskId; }
+    public void setTaskId(String taskId) { this.taskId = taskId; }
+
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public int getUnreadMessageCount() { return unreadMessageCount; }
+    public void setUnreadMessageCount(int unreadMessageCount) { this.unreadMessageCount = unreadMessageCount; }
+
+    public String getLatestMessage() { return latestMessage; }
+    public void setLatestMessage(String latestMessage) { this.latestMessage = latestMessage; }
+
+    public LocalDateTime getLatestMessageAt() { return latestMessageAt; }
+    public void setLatestMessageAt(LocalDateTime latestMessageAt) { this.latestMessageAt = latestMessageAt; }
+
+    public List<BaseEvent> getEvents() { return events; }
+    public void setEvents(List<BaseEvent> events) { this.events = events; }
+
+    public List<FileMeta> getFiles() { return files; }
+    public void setFiles(List<FileMeta> files) { this.files = files; }
+
+    public Map<String, Memory> getMemories() { return memories; }
+    public void setMemories(Map<String, Memory> memories) { this.memories = memories; }
+
+    public SessionStatus getStatus() { return status; }
+
+    /** 只允许包内（状态机方法）修改状态，外部禁止直接赋。*/
+    void setStatus(SessionStatus status) { this.status = status; }
+
+    public boolean isRunning() { return status == SessionStatus.RUNNING; }
+    public boolean isWaiting() { return status == SessionStatus.WAITING; }
+    public boolean isCompleted() { return status == SessionStatus.COMPLETED; }
+
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+}
+
+

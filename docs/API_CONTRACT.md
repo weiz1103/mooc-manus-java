@@ -1,4 +1,4 @@
-# MoocManus API & Event Contract Baseline
+# AgentFlow API & Event Contract Baseline
 
 This document defines the strict frontend-backend contract that must be preserved during any architectural refactoring.
 
@@ -43,3 +43,4 @@ All events streamed in `/chat` must contain these base fields:
 - **`step`**: Contains `step` (Object with details)
 - **`tool`**: Contains `function_name`, `function_args`, `status`
 - **`title`**: Contains `title` (String)
+

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: agentflow-sandbox-server
+
+server:
+  port: ${SANDBOX_PORT:8081}
+
+AgentFlow:
+  sandbox:
+    work-dir: ${SANDBOX_WORK_DIR:${java.io.tmpdir}/AgentFlow-sandbox}
+
+logging:
+  level:
+    io.github.weiz1103.agentflow.sandbox: INFO
+    root: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+

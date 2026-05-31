@@ -12,17 +12,17 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.imooc.manus</groupId>
-    <artifactId>mooc-manus-java</artifactId>
+    <groupId>io.github.weiz1103.agentflow</groupId>
+    <artifactId>agentflow-java</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>MoocManus AI Agent System - Java Implementation</description>
+    <description>AgentFlow AI Agent System - Java Implementation</description>
 
     <modules>
-        <module>manus-common</module>
-        <module>manus-sandbox-server</module>
-        <module>manus-spring-ai</module>
-        <module>manus-api</module>
+        <module>agentflow-common</module>
+        <module>agentflow-sandbox-server</module>
+        <module>agentflow-spring-ai</module>
+        <module>agentflow-api</module>
     </modules>
 
     <properties>
@@ -56,8 +56,8 @@
             </dependency>
             <!-- Internal modules -->
             <dependency>
-                <groupId>com.imooc.manus</groupId>
-                <artifactId>manus-common</artifactId>
+                <groupId>io.github.weiz1103.agentflow</groupId>
+                <artifactId>agentflow-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- Playwright for browser automation -->
@@ -184,3 +184,4 @@
         </plugins>
     </build>
 </project>
+

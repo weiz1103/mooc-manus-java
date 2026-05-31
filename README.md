@@ -1,86 +1,86 @@
 # AgentFlow Java
 
-`agentflow-java` 鏄竴涓潰鍚?Agent 鍦烘櫙鐨?Java 鍚庣椤圭洰銆傚畠鍋氱殑浜嬫儏寰堢洿鎺ワ細**鎶婁竴娆＄敤鎴疯緭鍏ュ彉鎴愬彲寮傛鎵ц銆佸彲瀹炴椂鏌ョ湅銆佸彲涓柇鎭㈠銆佸彲鍥炴斁璇勪及鐨?Agent 浠诲姟銆?*
+`AgentFlow-java` 是一个面向 Agent 场景的 Java 后端项目。它做的事情很直接：**把一次用户输入变成可异步执行、可实时查看、可中断恢复、可回放评估的 Agent 任务。**
 
-瀹冧笉鏄竴涓彧婕旂ず妯″瀷璋冪敤鐨?Demo锛岃€屾槸涓€濂楁寜鍚庣宸ョ▼鏂瑰紡缁勭粐璧锋潵鐨?Agent 绯荤粺銆?
-
----
-
-## 椤圭洰绠€浠?
-
-杩欎釜椤圭洰鍩轰簬 **Java 21 + Spring Boot + Spring AI + Redis + PostgreSQL** 鏋勫缓锛屽墠绔€氳繃 **SSE** 鏌ョ湅鎵ц杩囩▼锛屽悗绔妸璇锋眰鎻愪氦涓哄悗鍙颁换鍔★紝鐢?Worker 寮傛鎵ц Planner + ReAct 娴佺▼锛屽苟鎶婃墽琛屼簨浠跺悓姝ュ啓鍏ヤ細璇濆巻鍙层€佷换鍔¤处鏈拰浜嬩欢娴併€?
-
-瀹冮噸鐐硅В鍐崇殑鏄笅闈㈣繖浜涢棶棰橈細
-
-- 涓€娆?Agent 浠诲姟鍙兘鎵ц寰堜箙锛屼笉鑳戒竴鐩村崰鐫€ HTTP 绾跨▼
-- 鍓嶇甯屾湜瀹炴椂鐪嬪埌杩囩▼锛岃€屼笉鏄彧鎷挎渶缁堢粨鏋?
-- 鐢ㄦ埛鏂嚎鍚庯紝甯屾湜杩樿兘浠庝笂娆＄殑浣嶇疆缁х画鐪?
-- 浠诲姟鍙兘澶辫触銆佺瓑寰呰緭鍏ワ紝鎴栬€呰鎵嬪姩鍋滄
-- 鎵ц杩囩▼闇€瑕佽兘鍥炴斁銆佹帓鏌ュ拰璇勪及
+它不是一个只演示模型调用的 Demo，而是一套按后端工程方式组织起来的 Agent 系统。
 
 ---
 
-## 鏍稿績鑳藉姏
+## 项目简介
 
-褰撳墠绯荤粺宸茬粡鍏峰杩欎簺鏍稿績鑳藉姏锛?
+这个项目基于 **Java 21 + Spring Boot + Spring AI + Redis + PostgreSQL** 构建，前端通过 **SSE** 查看执行过程，后端把请求提交为后台任务，由 Worker 异步执行 Planner + ReAct 流程，并把执行事件同步写入会话历史、任务账本和事件流。
 
-- **SSE 瀹炴椂鎺ㄩ€?*锛氬墠绔彲浠ユ寔缁湅鍒?`message / plan / step / tool / done` 绛変簨浠?
-- **鍚庡彴浠诲姟鎵ц**锛氳姹傛彁浜ゅ悗鐢?Worker 寮傛娑堣垂锛屼笉鍦?HTTP 绾跨▼閲岄暱鏃堕棿闃诲
-- **鏂嚎缁祦**锛氬鎴风鍙互鍩轰簬 `event_id` 浠庢柇鐐圭户缁鍙栨墽琛岃繃绋?
-- **鍋滄涓庡彇娑?*锛氳繍琛屼腑鐨勪换鍔″彲浠ュ崗浣滃紡鍙栨秷
-- **浠诲姟鐘舵€佺鐞?*锛氫换鍔℃彁浜ゃ€佸垎鍙戙€佽繍琛屻€佺瓑寰呫€佸畬鎴愩€佸け璐ャ€佸彇娑堥兘鏈夋槑纭姸鎬?
-- **浜嬩欢璐︽湰涓庡洖鏀?*锛氭墽琛岃繃绋嬪彲 replay锛屽彲鐢ㄤ簬鎺掓煡鍜屽鐩?
-- **鍩虹瑙傛祴涓庤瘎浼?*锛氭敮鎸佹墽琛岃瘎鍒嗐€佸惊鐜闄╄瘑鍒拰 loop report
+它重点解决的是下面这些问题：
+
+- 一次 Agent 任务可能执行很久，不能一直占着 HTTP 线程
+- 前端希望实时看到过程，而不是只拿最终结果
+- 用户断线后，希望还能从上次的位置继续看
+- 任务可能失败、等待输入，或者被手动停止
+- 执行过程需要能回放、排查和评估
 
 ---
 
-## 妯″潡缁撴瀯
+## 核心能力
 
-椤圭洰閲囩敤 Maven 澶氭ā鍧楃粨鏋勶細
+当前系统已经具备这些核心能力：
+
+- **SSE 实时推送**：前端可以持续看到 `message / plan / step / tool / done` 等事件
+- **后台任务执行**：请求提交后由 Worker 异步消费，不在 HTTP 线程里长时间阻塞
+- **断线续流**：客户端可以基于 `event_id` 从断点继续读取执行过程
+- **停止与取消**：运行中的任务可以协作式取消
+- **任务状态管理**：任务提交、分发、运行、等待、完成、失败、取消都有明确状态
+- **事件账本与回放**：执行过程可 replay，可用于排查和复盘
+- **基础观测与评估**：支持执行评分、循环风险识别和 loop report
+
+---
+
+## 模块结构
+
+项目采用 Maven 多模块结构：
 
 ### `agentflow-api`
-涓诲簲鐢ㄦā鍧楋紝璐熻矗锛?
+主应用模块，负责：
 
-- REST / SSE 鎺ュ彛
-- 浼氳瘽绠＄悊
-- 鑱婂ぉ涓绘祦绋嬬紪鎺?
-- 浠诲姟鎻愪氦涓庡仠姝?
-- Worker 璋冨害
-- 浜嬩欢鎸佷箙鍖栦笌鐘舵€佸悓姝?
-- 鎵ц瑙傛祴涓庤瘎浼版帴鍙?
+- REST / SSE 接口
+- 会话管理
+- 聊天主流程编排
+- 任务提交与停止
+- Worker 调度
+- 事件持久化与状态同步
+- 执行观测与评估接口
 
 ### `agentflow-spring-ai`
-Agent 杩愯鍐呮牳锛岃礋璐ｏ細
+Agent 运行内核，负责：
 
 - Planner Agent
 - ReAct Agent
 - Planner + ReAct Flow
-- 宸ュ叿鍥炶皟娉ㄥ唽
-- Memory / session state 鎶借薄
+- 工具回调注册
+- Memory / session state 抽象
 
 ### `agentflow-common`
-鍏叡濂戠害妯″潡锛岃礋璐ｏ細
+公共契约模块，负责：
 
-- `BaseEvent` 鍙婂悇绫讳簨浠舵ā鍨?
+- `BaseEvent` 及各类事件模型
 - DTO
-- 閫氱敤缁撴灉瀵硅薄
+- 通用结果对象
 
 ### `agentflow-sandbox-server`
-娌欑鎵ц妯″潡锛岃礋璐ｏ細
+沙箱执行模块，负责：
 
-- Shell 鎵ц
-- 鏂囦欢璇诲啓
-- 娴忚鍣ㄨ兘鍔?
-- 鍙楁帶鎵ц鐜
+- Shell 执行
+- 文件读写
+- 浏览器能力
+- 受控执行环境
 
 ---
 
-## 涓婚摼璺?
+## 主链路
 
-涓€娆¤姹傜殑鏍稿績鎵ц閾捐矾濡備笅锛?
+一次请求的核心执行链路如下：
 
 ```text
-鍓嶇鍙戞秷鎭?
+前端发消息
 -> SessionController
 -> ChatService
 -> TaskDispatchQueue.submit(...)
@@ -91,85 +91,85 @@ Agent 杩愯鍐呮牳锛岃礋璐ｏ細
 -> EventPersister / SessionStateSync / SSE
 ```
 
-涓€鍙ヨ瘽姒傛嫭杩欐潯閾捐矾锛?
+一句话概括这条链路：
 
-> 鍓嶇鍙戣捣璇锋眰锛屽悗绔妸瀹冨彉鎴愬悗鍙颁换鍔℃墽琛岋紝鎵ц杩囩▼涓寔缁骇鍑轰簨浠讹紝浜嬩欢琚繚瀛樸€佸悓姝ュ苟鎺ㄩ€佺粰鍓嶇銆?
+> 前端发起请求，后端把它变成后台任务执行，执行过程中持续产出事件，事件被保存、同步并推送给前端。
 
 ---
 
-## 鍖呯粨鏋?
+## 包结构
 
-`agentflow-api` 褰撳墠鎸夎亴璐ｆ媶鍒嗕负涓嬮潰鍑犲眰锛?
+`agentflow-api` 当前按职责拆分为下面几层：
 
 ```text
 agentflow-api
-鈹溾攢 interfaces
-鈹? 鈹溾攢 rest
-鈹? 鈹斺攢 sse
-鈹溾攢 application
-鈹? 鈹溾攢 service
-鈹? 鈹斺攢 agent
-鈹溾攢 domain
-鈹? 鈹溾攢 model
-鈹? 鈹溾攢 repository
-鈹? 鈹溾攢 service
-鈹? 鈹溾攢 external
-鈹? 鈹斺攢 exception
-鈹斺攢 infrastructure
-   鈹溾攢 event
-   鈹溾攢 task
-   鈹溾攢 repository
-   鈹溾攢 external
-   鈹溾攢 observability
-   鈹溾攢 springai
-   鈹斺攢 config
+├─ interfaces
+│  ├─ rest
+│  └─ sse
+├─ application
+│  ├─ service
+│  └─ agent
+├─ domain
+│  ├─ model
+│  ├─ repository
+│  ├─ service
+│  ├─ external
+│  └─ exception
+└─ infrastructure
+   ├─ event
+   ├─ task
+   ├─ repository
+   ├─ external
+   ├─ observability
+   ├─ springai
+   └─ config
 ```
 
-杩欏缁撴瀯鐨勬牳蹇冪洰鐨勫緢绠€鍗曪細
+这套结构的核心目的很简单：
 
-- `interfaces` 璐熻矗瀵瑰鎺ュ彛
-- `application` 璐熻矗娴佺▼缂栨帓
-- `domain` 鏀炬牳蹇冩ā鍨嬪拰绔彛鎶借薄
-- `infrastructure` 鏀炬妧鏈疄鐜板拰澶栭儴閫傞厤
+- `interfaces` 负责对外接口
+- `application` 负责流程编排
+- `domain` 放核心模型和端口抽象
+- `infrastructure` 放技术实现和外部适配
 
 ---
 
-## 蹇€熷紑濮?
+## 快速开始
 
-### 鐜瑕佹眰
+### 环境要求
 
 - JDK 21+
 - Maven 3.9.15+
 - PostgreSQL
 - Redis
 
-### 缂栬瘧椤圭洰
+### 编译项目
 
 ```powershell
-Set-Location "D:\Code\agentflow-master\agentflow\agentflow\agentflow-java"
+Set-Location "D:\Code\agentflow-java"
 mvn -q -DskipTests compile
 ```
 
-### 杩愯娴嬭瘯
+### 运行测试
 
 ```powershell
-Set-Location "D:\Code\agentflow-master\agentflow\agentflow\agentflow-java"
+Set-Location "D:\Code\agentflow-java"
 mvn -q test
 ```
 
-### 鍚姩 API 妯″潡
+### 启动 API 模块
 
-涓诲簲鐢ㄥ叆鍙ｄ綅浜庯細
+主应用入口位于：
 
-- `agentflow-api/src/main/java/com/iAGENTFLOW/AgentFlow/api/AgentFlowApiApplication.java`
+- `agentflow-api/io.github.weiz1103.agentflow.api.AgentFlowApiApplication.java`
 
-鍦ㄨˉ榻愭湰鍦伴厤缃悗锛屽彲鐩存帴鍚姩璇ュ簲鐢ㄣ€?
+在补齐本地配置后，可直接启动该应用。
 
 ---
 
-## 鏂囨。瀵艰埅
+## 文档导航
 
-濡傛灉浣犳兂缁х画娣卞叆鐪嬪疄鐜扮粏鑺傦紝寤鸿鎸変笅闈㈤『搴忛槄璇伙細
+如果你想继续深入看实现细节，建议按下面顺序阅读：
 
 1. [`docs/README.md`](./docs/README.md)
 2. [`docs/ARCHITECTURE_HANDBOOK.md`](./docs/ARCHITECTURE_HANDBOOK.md)
@@ -177,10 +177,8 @@ mvn -q test
 
 ---
 
-## 鎬荤粨
+## 总结
 
-AgentFlow Java 鐨勯噸鐐癸紝涓嶆槸鈥滆妯″瀷鍥炵瓟闂鈥濓紝鑰屾槸鎶?**浠诲姟鎵ц銆佷簨浠舵祦銆佺姸鎬佺鐞嗗拰鍓嶇瀹炴椂浜や簰** 杩欏嚑浠朵簨鐪熸涓茶捣鏉ャ€?
+AgentFlow Java 的重点，不是“让模型回答问题”，而是把 **任务执行、事件流、状态管理和前端实时交互** 这几件事真正串起来。
 
-濡傛灉浣犳兂蹇€熺湅鎳傝繖涓」鐩紝鍏堜粠鏍?README 鍜屾灦鏋勬枃妗ｅ紑濮嬶紱濡傛灉鍙涓€鍙ヨ瘽锛岄偅灏辨槸锛?*瀹冭В鍐崇殑鏄?Agent 鍦ㄥ悗绔湡姝ｈ惤鍦版椂鐨勬墽琛屻€佺画娴併€佸彇娑堝拰鍥炴斁闂銆?*
-
-
+如果你想快速看懂这个项目，先从根 README 和架构文档开始；如果只记一句话，那就是：**它解决的是 Agent 在后端真正落地时的执行、续流、取消和回放问题。**

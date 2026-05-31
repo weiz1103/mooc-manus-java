@@ -1,22 +1,20 @@
-package com.imooc.manus.api.event;
+package com.imooc.manus.api.infrastructure.event;
 
 import com.imooc.manus.api.domain.repository.SessionRepository;
 import com.imooc.manus.api.domain.repository.TaskEventLogRepository;
 import com.imooc.manus.api.infrastructure.config.RedisTaskFactory;
 import com.imooc.manus.api.domain.model.session.Session;
+import com.imooc.manus.common.event.BaseEvent;
 import com.imooc.manus.common.event.MessageEvent;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
-
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EventPersisterTest {
 
     @Test
-    @SuppressWarnings("unchecked")
     void shouldAppendTaskEventLogWhenSessionHasTaskId() {
         SessionRepository sessionRepository = Mockito.mock(SessionRepository.class);
         RedisTaskFactory taskFactory = Mockito.mock(RedisTaskFactory.class);
@@ -35,9 +33,10 @@ class EventPersisterTest {
 
         persister.save(session, event);
 
-        ArgumentCaptor<Map<String, Object>> eventDataCaptor = ArgumentCaptor.forClass(Map.class);
-        Mockito.verify(sessionRepository).addEventData(Mockito.eq("session-1"), eventDataCaptor.capture());
-        assertThat(eventDataCaptor.getValue()).containsEntry("type", "message");
+        ArgumentCaptor<BaseEvent> eventCaptor = ArgumentCaptor.forClass(BaseEvent.class);
+        Mockito.verify(sessionRepository).addEvent(Mockito.eq("session-1"), eventCaptor.capture());
+        assertThat(eventCaptor.getValue()).isInstanceOf(MessageEvent.class);
+        assertThat(((MessageEvent) eventCaptor.getValue()).getMessage()).isEqualTo("hello");
         Mockito.verify(taskEventLogRepository).appendIfAbsent(Mockito.argThat(log ->
                 "session-1".equals(log.getSessionId())
                         && "task-1".equals(log.getTaskId())
@@ -65,5 +64,6 @@ class EventPersisterTest {
         Mockito.verify(taskEventLogRepository, Mockito.never()).appendIfAbsent(Mockito.any());
     }
 }
+
 
 

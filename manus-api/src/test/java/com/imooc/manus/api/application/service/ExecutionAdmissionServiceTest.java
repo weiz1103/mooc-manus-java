@@ -1,4 +1,4 @@
-package com.imooc.manus.api.service;
+package com.imooc.manus.api.application.service;
 
 import com.imooc.manus.api.infrastructure.config.AppProperties;
 import org.junit.jupiter.api.Test;
@@ -56,4 +56,5 @@ class ExecutionAdmissionServiceTest {
         assertThat(service.rejectReason("session-1")).contains("session_active_task_limit_exceeded");
     }
 }
+
 

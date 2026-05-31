@@ -1,4 +1,4 @@
-package com.imooc.manus.api.service;
+package com.imooc.manus.api.application.service;
 
 import com.imooc.manus.api.domain.model.task.TaskEventLog;
 import com.imooc.manus.api.domain.model.task.TaskExecution;
@@ -94,4 +94,5 @@ class TaskEvaluationServiceTest {
         return execution;
     }
 }
+
 

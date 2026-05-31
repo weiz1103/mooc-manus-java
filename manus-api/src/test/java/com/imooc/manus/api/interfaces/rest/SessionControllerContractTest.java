@@ -3,10 +3,11 @@ package com.imooc.manus.api.interfaces.rest;
 import com.imooc.manus.api.domain.model.file.FileMeta;
 import com.imooc.manus.api.domain.model.session.Session;
 import com.imooc.manus.api.domain.model.session.SessionStatus;
-import com.imooc.manus.api.observability.ExecutionObservationSink;
-import com.imooc.manus.api.observability.ExecutionSnapshot;
-import com.imooc.manus.api.service.ChatService;
-import com.imooc.manus.api.service.SessionService;
+import com.imooc.manus.api.application.service.ChatService;
+import com.imooc.manus.api.application.service.SessionCommandService;
+import com.imooc.manus.api.application.service.SessionQueryService;
+import com.imooc.manus.api.infrastructure.observability.ExecutionObservationSink;
+import com.imooc.manus.api.infrastructure.observability.ExecutionSnapshot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -37,7 +38,9 @@ class SessionControllerContractTest {
     private MockMvc mockMvc;
 
     @MockitoBean
-    private SessionService sessionService;
+    private SessionQueryService sessionQueryService;
+    @MockitoBean
+    private SessionCommandService sessionCommandService;
     @MockitoBean
     private ChatService chatService;
     @MockitoBean
@@ -60,7 +63,7 @@ class SessionControllerContractTest {
 
     @Test
     void createSession() throws Exception {
-        Mockito.when(sessionService.create()).thenReturn(testSession);
+        Mockito.when(sessionCommandService.create()).thenReturn(testSession);
 
         mockMvc.perform(post("/api/v1/sessions"))
                 .andExpect(status().isOk())
@@ -71,7 +74,7 @@ class SessionControllerContractTest {
 
     @Test
     void getAllSessions() throws Exception {
-        Mockito.when(sessionService.listAll()).thenReturn(List.of(testSession));
+        Mockito.when(sessionQueryService.listAll()).thenReturn(List.of(testSession));
 
         mockMvc.perform(get("/api/v1/sessions"))
                 .andExpect(status().isOk())
@@ -84,7 +87,7 @@ class SessionControllerContractTest {
 
     @Test
     void getSessionDetail() throws Exception {
-        Mockito.when(sessionService.getDetail("test-session-123")).thenReturn(testSession);
+        Mockito.when(sessionQueryService.getDetail("test-session-123")).thenReturn(testSession);
 
         mockMvc.perform(get("/api/v1/sessions/test-session-123"))
                 .andExpect(status().isOk())
@@ -101,7 +104,7 @@ class SessionControllerContractTest {
                 .andExpect(jsonPath("$.code").value(200))
                 .andExpect(jsonPath("$.msg").value("清除未读消息数成功"));
 
-        Mockito.verify(sessionService).clearUnreadCount("test-session-123");
+        Mockito.verify(sessionCommandService).clearUnreadCount("test-session-123");
     }
 
     @Test
@@ -111,7 +114,7 @@ class SessionControllerContractTest {
                 .andExpect(jsonPath("$.code").value(200))
                 .andExpect(jsonPath("$.msg").value("删除任务会话成功"));
 
-        Mockito.verify(sessionService).delete("test-session-123");
+        Mockito.verify(sessionCommandService).delete("test-session-123");
     }
 
     @Test
@@ -121,12 +124,12 @@ class SessionControllerContractTest {
                 .andExpect(jsonPath("$.code").value(200))
                 .andExpect(jsonPath("$.msg").value("停止任务会话成功"));
 
-        Mockito.verify(sessionService).stop("test-session-123");
+        Mockito.verify(sessionCommandService).stop("test-session-123");
     }
 
     @Test
     void listFiles() throws Exception {
-        Mockito.when(sessionService.listFiles("test-session-123"))
+        Mockito.when(sessionQueryService.listFiles("test-session-123"))
                 .thenReturn(List.of(FileMeta.ofFilepath("/workspace/result.txt")));
 
         mockMvc.perform(get("/api/v1/sessions/test-session-123/files"))
@@ -137,7 +140,7 @@ class SessionControllerContractTest {
 
     @Test
     void runtimeMetrics() throws Exception {
-        Mockito.when(sessionService.getDetail("test-session-123")).thenReturn(testSession);
+        Mockito.when(sessionQueryService.getDetail("test-session-123")).thenReturn(testSession);
         Mockito.when(executionObservationSink.getLatestBySessionId("test-session-123"))
                 .thenReturn(Optional.of(ExecutionSnapshot.submitted("test-session-123", "task-1").toBuilder()
                         .status("running")
